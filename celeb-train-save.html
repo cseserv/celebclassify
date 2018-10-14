@@ -178,12 +178,12 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 38,Cobie_Smulders,https://m.media-amazon.com/images/M/MV5BMTkzNTUyMTczM15BMl5BanBnXkFtZTcwMjMxNTM4Nw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 39,Zooey_Deschanel,https://m.media-amazon.com/images/M/MV5BMTgzMjM2NDE1OF5BMl5BanBnXkFtZTcwMjA2NDU5OA@@._V1_UY209_CR8,0,140,209_AL_.jpg***
 40,Emily_Blunt,https://m.media-amazon.com/images/M/MV5BMTUxNDY4MTMzM15BMl5BanBnXkFtZTcwMjg5NzM2Ng@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-41,,***
-42,,***
-43,,***
-44,,***
-45,,***
-46,,***
+41,Kathryn_Prescott,https://m.media-amazon.com/images/M/MV5BMTQwNTE1NzcxN15BMl5BanBnXkFtZTgwMDgyODM1MTE@._V1_UX140_CR0,0,140,209_AL_.jpg***
+42,Katherine_Heigl,https://m.media-amazon.com/images/M/MV5BNTM0NDEwMjA1MV5BMl5BanBnXkFtZTcwMzQxMDI3Mg@@._V1_UY209_CR1,0,140,209_AL_.jpg***
+43,Ashley_Benson,https://m.media-amazon.com/images/M/MV5BMTkzMDY1NDk5MV5BMl5BanBnXkFtZTgwNTMxNzIyOTE@._V1_UY209_CR34,0,140,209_AL_.jpg***
+44,Hilarie_Burton,https://m.media-amazon.com/images/M/MV5BMTIxNDQzOTA0NF5BMl5BanBnXkFtZTYwMzQwNDIz._V1_UY209_CR1,0,140,209_AL_.jpg***
+45,Alexis_Bledel,https://m.media-amazon.com/images/M/MV5BMTc4NTg4ODU0Ml5BMl5BanBnXkFtZTgwOTA1MjUwNDE@._V1_UY209_CR8,0,140,209_AL_.jpg***
+46,Rosario_Dawson,https://m.media-amazon.com/images/M/MV5BMTk1NjQ3NTYyNF5BMl5BanBnXkFtZTcwODU4NzQ4NQ@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 47,,***
 48,,***
 49,,***
@@ -259,8 +259,8 @@ myLoadManyImages = async function() {
                                                                                    
        const forwardParams = {inputSize: 'sm', scoreThreshold:0.5}   // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
        result2 = await faceapi.tinyYolov2(can, forwardParams) 
-      // console.log(result2)  
-       console.log(myI+', '+result2)  
+       console.log(myI)  
+       console.log(result2)  
        if (result2.length > 0){     
                                                                                              
           myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
