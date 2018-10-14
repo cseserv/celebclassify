@@ -216,7 +216,12 @@ let myIncomingImages = []
 myCheckGroups   = async function() {  
    document.getElementById('myDivLoss').innerHTML = ''  // clear it                                                                                          
    for (let x=0;   x < myGroups.length; x++){
-      document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>'                                               
+                                                                                             
+      if (myGroups[x] == undefined) {
+            document.getElementById('myDivLoss').innerHTML += '<font color:red>#: '+ x + ', label: </font>'                                                                                 
+          } else {                                                                                       
+         document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>' 
+      }                                                                                       
    } 
  }                                                                                            
                                                                                              
