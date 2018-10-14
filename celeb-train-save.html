@@ -163,7 +163,17 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 27,Jessica_Lowndes,https://m.media-amazon.com/images/M/MV5BOTY2M2I1OTgtYWI5Zi00Mjc1LWI5MDQtNmYzMWM4Y2ExMTNkXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 28,Anna_Paquin,https://m.media-amazon.com/images/M/MV5BMTcxNzM2NjMzNl5BMl5BanBnXkFtZTgwOTE2Njk0MjE@._V1_UY209_CR67,0,140,209_AL_.jpg***
 29,Ashley_Greene,https://m.media-amazon.com/images/M/MV5BNDQwMjMyMDMyNF5BMl5BanBnXkFtZTcwNjI1MDQ5Nw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-30,Jessica_Stroup,https://m.media-amazon.com/images/M/MV5BMTNkN2IzMzItNzJhYy00MWJjLWEzZWMtNTliODRiN2RiMTllXkEyXkFqcGdeQXVyNTExMjk4NA@@._V1_UX140_CR0,0,140,209_AL_.jpg***</textarea> 
+30,Jessica_Stroup,https://m.media-amazon.com/images/M/MV5BMTNkN2IzMzItNzJhYy00MWJjLWEzZWMtNTliODRiN2RiMTllXkEyXkFqcGdeQXVyNTExMjk4NA@@._V1_UX140_CR0,0,140,209_AL_.jpg***
+31,,***
+32,,***
+33,,***
+34,,***
+35,,***
+36,,***
+37,,***
+38,,***
+39,,***
+40,,***</textarea> 
  
  <!-- ************* Next we define the Javascript inside a web element so that the page can be refreshed dynamically **************-->
  
@@ -418,7 +428,68 @@ myPredict = async function(){
     
                                                                                              
                                                                                              
+  
+/////////////////////////////////////////// NEW SAVING and LOADING functions ///////////////////////////////////////////                                                                                      
                                                                                              
+                                                                                             
+ myDefineClassifierModel = async function(myPassedClassifier){
+
+    let myLayerList = []
+     myLayerList[0] = []    // for the input layer name as a string
+     myLayerList[1] = []    // for the input layer
+     myLayerList[2] = []    // for the concatenate layer name as a string
+     myLayerList[3] = []    // for the concatenate layer
+                                                                                                                                                                                        
+    let myMaxClasses =    myPassedClassifier.getNumClasses()                                                                                      
+    //console.log('myPassedClassifier.getNumClasses()')
+    //console.log(myMaxClasses)                                                                                      
+                                                                                             
+    for (let myClassifierLoop = 0; myClassifierLoop < myMaxClasses; myClassifierLoop++ ){      // need number of classifiers                                        
+                                                                                         
+      //console.log(myPassedClassifier.getClassifierDataset()[myClassifierLoop])                                                                                                                                                           
+      //console.log('shape first layer =')                                                                                                                                                           
+      //console.log(myPassedClassifier.getClassifierDataset()[myClassifierLoop].shape[0])
+                                                                                             
+      myLayerList[0][myClassifierLoop] = 'myInput'  + myClassifierLoop                  // input name as a string
+      console.log('define input for'+myClassifierLoop)                                                                                       
+      myLayerList[1][myClassifierLoop] = tf.input({shape: myPassedClassifier.getClassifierDataset()[myClassifierLoop].shape[0], name: myLayerList[1][myClassifierLoop]});      // Define input layer
+      console.log('define dense for: '+myClassifierLoop)
+      myLayerList[2][myClassifierLoop] = 'myInput'+myClassifierLoop+'Dense1'    // concatenate as a string                                                                                  
+      myLayerList[3][myClassifierLoop] = tf.layers.dense({units: 136, name: myGroups[myClassifierLoop]}).apply(myLayerList[1][myClassifierLoop]);             //Define concatenate layer                                                                          
+                                                                                           
+    }
+                                                                                             
+
+   // what the layers used to look like before the loop                                                                                            
+   //const myInput2 = tf.input({shape: [1], name: 'myInput2'});
+   //const myInput2Dense1 = tf.layers.dense({units: 20, name: 'myInput2Dense1'}).apply(myInput2);
+
+                                                                                             
+   console.log('Concatenate Paths')                                                                                                                                                                                          
+   const myConcatenate1 = tf.layers.concatenate({axis : 1, name: 'myConcatenate1'}).apply(myLayerList[3]);    // send the entire list of dense                                                                                           
+   const myConcatenate1Dense4 = tf.layers.dense({units: 1, name: 'myConcatenate1Dense4'}).apply(myConcatenate1)                                                                                              
+ 
+   console.log('Define Model')                                                                                                                                                                                       
+   const myClassifierModel = tf.model({inputs: myLayerList[1], outputs: myConcatenate1Dense4});    // This would be a global model. With list of inputs as an array                                                                                                                                                                                         
+   myClassifierModel.summary()
+   console.log('myClassifierModel.layers[myMaxClasses]')     
+   console.log(myClassifierModel.layers[myMaxClasses])
+   myPassedClassifier.getClassifierDataset()[0].print(true)                                                                                            
+                                                                                             
+   for (let myClassifierLoop = 0; myClassifierLoop < myMaxClasses; myClassifierLoop++ ){   // since the first layers are inputs must add maxClasses   
+     const myInWeight = await myPassedClassifier.getClassifierDataset()[myClassifierLoop]                                                                                        
+     myClassifierModel.layers[myClassifierLoop + myMaxClasses].setWeights([myInWeight, tf.ones([136])]);       //model.layers[0].setWeights([tf.ones([10, 2]), tf.ones([2])]);                                                                                        
+
+  }                                                                                           
+                                                                                             
+ return  myClassifierModel                                                                                        
+}                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                                                                     
                                                                                              
                                                                                             
                                                                                              
