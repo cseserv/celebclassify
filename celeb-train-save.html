@@ -101,10 +101,7 @@ live "Train" objects from the model and get results at the same time! <br>
  
 <input type=text id="myInFile" size=120 value="models/myClassifierModel01.json"> <br>
 <input type=button value="Check Training" onclick="{
-  for (let x=0;   x < myGroups.length; x++){
-    document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>'                                               
- }                                                
-                                                   
+  myCheckGroups()                                                                                                 
 }"> 
 <input type=button value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
@@ -214,6 +211,16 @@ let myIncomingImages = []
 
 //////////////////////////////////////// knn classifier stuff///////////////////////////
 
+                                                                                             
+myCheckGroups   = async function() {                                                                                            
+   for (let x=0;   x < myGroups.length; x++){
+      document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>'                                               
+   } 
+ }                                                                                            
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
 myLoadManyImages = async function() {
   
    const myIn = document.getElementById('myArray01').value.split('***')
@@ -252,7 +259,8 @@ myLoadManyImages = async function() {
                                                                                    
        const forwardParams = {inputSize: 'sm', scoreThreshold:0.5}   // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
        result2 = await faceapi.tinyYolov2(can, forwardParams) 
-       console.log(result2)  
+      // console.log(result2)  
+       console.log(myI+', '+result2)  
        if (result2.length > 0){     
                                                                                              
           myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
