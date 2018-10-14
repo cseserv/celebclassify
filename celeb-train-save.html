@@ -129,12 +129,13 @@ Analyse every <input type=number id="myInterval"  value="500" size=5> millisecon
  
 <div id="myDivSummary">...</div><br><br>
 
-<input type=button value="Check Training" onclick="{
-  myCheckGroups()                                                                                                 
-}">  
+
 <input type=button value="Load Group" onclick="{
    myLoadManyImages()                                              
-}"><br>
+}">
+ <input type=button value="Check Training" onclick="{
+  myCheckGroups()                                                                                                 
+}">  <br>
 To get faces use google search but set "tools" from "Not filtered by License" to "Labelled for reuse" I also set "any Size" to "medium"<br>
  <textarea id="myArray01" rows=10 cols=120>
 0,Megan_Fox,https://m.media-amazon.com/images/M/MV5BMTc5MjgyMzk4NF5BMl5BanBnXkFtZTcwODk2OTM4Mg@@._V1_UY209_CR3,0,140,209_AL_.jpg***  
@@ -152,7 +153,7 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 11,Michelle_Monaghan,https://m.media-amazon.com/images/M/MV5BNzEwYTdjNjYtZDk4NC00YzFmLTlkZTQtNTQyZTg3YmIxYWIxL2ltYWdlXkEyXkFqcGdeQXVyNzg5MzIyOA@@._V1_UY209_CR13,0,140,209_AL_.jpg***
 12,Lyndsy_Fonseca,https://m.media-amazon.com/images/M/MV5BMTM2NTU2NDI5NF5BMl5BanBnXkFtZTcwMjgzMjA2MQ@@._V1_UY209_CR8,0,140,209_AL_.jpg***
 13,Scarlett_Johansson,https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_UY209_CR16,0,140,209_AL_.jpg***
-14,Eliot_Sumner,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJPFUgCnVEWOVSVuBcG9qLzqJMTnPIFNKNZ3W9-9gnEF2tAdrLFQ***
+14,,***
 15,Olivia_Wilde,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjbcE6VlSxQhiMJ75-YMrvs9vaHfYtfN0553tQuSIulUti6pxG***
 16,Emma_Stone,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgcUOjQ7iMWKoZKFpCK-9sWePgYP0nxTJgQXQVa4wfQVCpi55X***
 17,Jessica_Alba,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnNlkueD_ajY-edEy_blKXd3Zf8iI82pe3qKqBFNTvQp0kIAeQ***
@@ -165,13 +166,13 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 24,Drew_Barrymore,https://m.media-amazon.com/images/M/MV5BMjEyOTMzODIxM15BMl5BanBnXkFtZTcwODM2NTY5Mg@@._V1_UY209_CR4,0,140,209_AL_.jpg***
 25,Taylor_Swift,https://m.media-amazon.com/images/M/MV5BMjA5ODI0NzIzNV5BMl5BanBnXkFtZTcwMzM0NjI2Nw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 26,Alison_Lohman,https://m.media-amazon.com/images/M/MV5BMTM3NTIzMTk2Nl5BMl5BanBnXkFtZTYwNzEwOTI4._V1_UY209_CR2,0,140,209_AL_.jpg***
-27,Jessica_Lowndes,https://m.media-amazon.com/images/M/MV5BOTY2M2I1OTgtYWI5Zi00Mjc1LWI5MDQtNmYzMWM4Y2ExMTNkXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-28,Anna_Paquin,https://m.media-amazon.com/images/M/MV5BMTcxNzM2NjMzNl5BMl5BanBnXkFtZTgwOTE2Njk0MjE@._V1_UY209_CR67,0,140,209_AL_.jpg***
+27,,***
+28,,***
 29,Ashley_Greene,https://m.media-amazon.com/images/M/MV5BNDQwMjMyMDMyNF5BMl5BanBnXkFtZTcwNjI1MDQ5Nw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 30,Jessica_Stroup,https://m.media-amazon.com/images/M/MV5BMTNkN2IzMzItNzJhYy00MWJjLWEzZWMtNTliODRiN2RiMTllXkEyXkFqcGdeQXVyNTExMjk4NA@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 31,Ashley_Judd,https://m.media-amazon.com/images/M/MV5BMTY3Mzg0ODcwOF5BMl5BanBnXkFtZTYwMzA2NDQz._V1_UX140_CR0,0,140,209_AL_.jpg***
 32,Leighton_Meester,https://m.media-amazon.com/images/M/MV5BMjQ3ODQzMzQ3OV5BMl5BanBnXkFtZTgwNTg3MjI5NDE@._V1_UY209_CR8,0,140,209_AL_.jpg***
-33,Helena_Christensen,***
+33,Helena_Christensen,https://m.media-amazon.com/images/M/MV5BMjA5MTE5MjcwOV5BMl5BanBnXkFtZTcwNTk3MjIwMg@@._V1_UY209_CR7,0,140,209_AL_.jpg***
 34,Nikki_Reed,https://m.media-amazon.com/images/M/MV5BMTM5NzQ2NjQwM15BMl5BanBnXkFtZTcwNzcwNzE2OQ@@._V1_UY209_CR1,0,140,209_AL_.jpg***
 35,Beyonce,https://m.media-amazon.com/images/M/MV5BMjMxMzg3MDI5NV5BMl5BanBnXkFtZTcwOTAxODc0Ng@@._V1_UY209_CR21,0,140,209_AL_.jpg***
 36,Shay_Mitchell,https://m.media-amazon.com/images/M/MV5BMzExOGM1ZTUtNWQ2Mi00ZDYzLWJkODUtYzM4ZTY1NDNjYjY0XkEyXkFqcGdeQXVyMjIyMjY1NjE@._V1_UY209_CR47,0,140,209_AL_.jpg***
@@ -185,10 +186,10 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 44,Hilarie_Burton,https://m.media-amazon.com/images/M/MV5BMTIxNDQzOTA0NF5BMl5BanBnXkFtZTYwMzQwNDIz._V1_UY209_CR1,0,140,209_AL_.jpg***
 45,Alexis_Bledel,https://m.media-amazon.com/images/M/MV5BMTc4NTg4ODU0Ml5BMl5BanBnXkFtZTgwOTA1MjUwNDE@._V1_UY209_CR8,0,140,209_AL_.jpg***
 46,Rosario_Dawson,https://m.media-amazon.com/images/M/MV5BMTk1NjQ3NTYyNF5BMl5BanBnXkFtZTcwODU4NzQ4NQ@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-47,Kate Walsh,https://m.media-amazon.com/images/M/MV5BMTk2NDEzNzg3MV5BMl5BanBnXkFtZTcwNjI1Mzg2Mw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-48,Claire Danes,https://m.media-amazon.com/images/M/MV5BMTMyMzQ1Mjk3M15BMl5BanBnXkFtZTcwNzk3ODMxNw@@._V1_UY209_CR10,0,140,209_AL_.jpg***
-49,Sienna Miller,https://m.media-amazon.com/images/M/MV5BNTU0MDcwMzAxM15BMl5BanBnXkFtZTgwMjAwMzA0NTM@._V1_UY209_CR8,0,140,209_AL_.jpg***
-50,Shannyn Sossamon,https://m.media-amazon.com/images/M/MV5BNjBlZjc3ZjItNThjYi00ODRmLTg1ZWItODA3NWZjY2ExNDdjXkEyXkFqcGdeQXVyMTY2NDE3NDI@._V1_UX140_CR0,0,140,209_AL_.jpg***</textarea> 
+47,Kate_Walsh,https://m.media-amazon.com/images/M/MV5BMTk2NDEzNzg3MV5BMl5BanBnXkFtZTcwNjI1Mzg2Mw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
+48,Claire_Danes,https://m.media-amazon.com/images/M/MV5BMTMyMzQ1Mjk3M15BMl5BanBnXkFtZTcwNzk3ODMxNw@@._V1_UY209_CR10,0,140,209_AL_.jpg***
+49,Sienna_Miller,https://m.media-amazon.com/images/M/MV5BNTU0MDcwMzAxM15BMl5BanBnXkFtZTgwMjAwMzA0NTM@._V1_UY209_CR8,0,140,209_AL_.jpg***
+50,Shannyn_Sossamon,https://m.media-amazon.com/images/M/MV5BNjBlZjc3ZjItNThjYi00ODRmLTg1ZWItODA3NWZjY2ExNDdjXkEyXkFqcGdeQXVyMTY2NDE3NDI@._V1_UX140_CR0,0,140,209_AL_.jpg***</textarea> 
  
  <!-- ************* Next we define the Javascript inside a web element so that the page can be refreshed dynamically **************-->
  
