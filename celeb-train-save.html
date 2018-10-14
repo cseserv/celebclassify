@@ -100,11 +100,13 @@ live "Train" objects from the model and get results at the same time! <br>
 <input type=button value="Save Classifier" onclick="{myClassifierSave()}"> <br><br>
  
 <input type=text id="myInFile" size=120 value="models/myClassifierModel01.json"> <br>
+<input type=button value="Check Training" onclick="{
+  document.getElementById('myDivLoss').value = 'wow'                                                 
+}"> 
 <input type=button value="Load Classifier" onclick="{myClassifierLoad()}"> 
-<div id="myDivLoss">...</div><br> 
  
-<div id="myDivLoss">...</div><br>
  
+
  
 <video  id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
 <canvas id="my32x32CanvasA"  width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
@@ -113,7 +115,9 @@ live "Train" objects from the model and get results at the same time! <br>
 <canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
 <canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
 
-
+<div id="myDivLoss">...</div><br> 
+ 
+ 
  <br><br>
 
 
