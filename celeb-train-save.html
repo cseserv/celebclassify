@@ -184,10 +184,10 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 44,Hilarie_Burton,https://m.media-amazon.com/images/M/MV5BMTIxNDQzOTA0NF5BMl5BanBnXkFtZTYwMzQwNDIz._V1_UY209_CR1,0,140,209_AL_.jpg***
 45,Alexis_Bledel,https://m.media-amazon.com/images/M/MV5BMTc4NTg4ODU0Ml5BMl5BanBnXkFtZTgwOTA1MjUwNDE@._V1_UY209_CR8,0,140,209_AL_.jpg***
 46,Rosario_Dawson,https://m.media-amazon.com/images/M/MV5BMTk1NjQ3NTYyNF5BMl5BanBnXkFtZTcwODU4NzQ4NQ@@._V1_UX140_CR0,0,140,209_AL_.jpg***
-47,,***
-48,,***
-49,,***
-50,,***</textarea> 
+47,Kate Walsh,https://m.media-amazon.com/images/M/MV5BMTk2NDEzNzg3MV5BMl5BanBnXkFtZTcwNjI1Mzg2Mw@@._V1_UX140_CR0,0,140,209_AL_.jpg***
+48,Claire Danes,https://m.media-amazon.com/images/M/MV5BMTMyMzQ1Mjk3M15BMl5BanBnXkFtZTcwNzk3ODMxNw@@._V1_UY209_CR10,0,140,209_AL_.jpg***
+49,Sienna Miller,https://m.media-amazon.com/images/M/MV5BNTU0MDcwMzAxM15BMl5BanBnXkFtZTgwMjAwMzA0NTM@._V1_UY209_CR8,0,140,209_AL_.jpg***
+50,Shannyn Sossamon,https://m.media-amazon.com/images/M/MV5BNjBlZjc3ZjItNThjYi00ODRmLTg1ZWItODA3NWZjY2ExNDdjXkEyXkFqcGdeQXVyMTY2NDE3NDI@._V1_UX140_CR0,0,140,209_AL_.jpg***</textarea> 
  
  <!-- ************* Next we define the Javascript inside a web element so that the page can be refreshed dynamically **************-->
  
@@ -212,7 +212,8 @@ let myIncomingImages = []
 //////////////////////////////////////// knn classifier stuff///////////////////////////
 
                                                                                              
-myCheckGroups   = async function() {                                                                                            
+myCheckGroups   = async function() {  
+   document.getElementById('myDivLoss').innerHTML = ''  // clear it                                                                                          
    for (let x=0;   x < myGroups.length; x++){
       document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>'                                               
    } 
