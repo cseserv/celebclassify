@@ -101,7 +101,10 @@ live "Train" objects from the model and get results at the same time! <br>
  
 <input type=text id="myInFile" size=120 value="models/myClassifierModel01.json"> <br>
 <input type=button value="Check Training" onclick="{
-  document.getElementById('myDivLoss').value = 'wow'                                                 
+  for (let x=0;   x < myGroups.length; x++){
+    document.getElementById('myDivLoss').innerHTML += '#: '+ x + ', label: '+ myGroups[x] + '<br>'                                               
+ }                                                
+                                                   
 }"> 
 <input type=button value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
