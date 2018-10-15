@@ -448,7 +448,7 @@ myPredict = async function(){
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
    
                                                                                              
-    myLoadOneImage(myIncomingImages[result.classIndex][2])                                                                                         
+    myLoadOneImage('https://m.media-amazon.com/images/M/MV5BMTM2NTU2NDI5NF5BMl5BanBnXkFtZTcwMjgzMjA2MQ@@._V1_UY209_CR8,0,140,209_AL_.jpg')                                                                                         
                                                                                              
                                                                                              
     document.getElementById('myDivTest').innerHTML = 'Group: ' + result.classIndex + ', '+ 
@@ -474,15 +474,15 @@ myLoadOneImage  = async function(myURL2){
         img.crossOrigin = 'Anonymous'                                                                                            
                                                                                                                                                                                     
        // let can = document.getElementById('my32x32CanvasA');
-      //  let ctx = can.getContext('2d');  
+       //  let ctx = can.getContext('2d');  
                                                                                                                                                                                                                                                                              
         img.onload = await async function() {
             ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
         }  // img  
                                                                                                                 
-  }                                                                                         
+     }                                                                                         
                                                                                            
-                                                                                           
+ }                                                                                          
                                                                                              
  myDefineClassifierModel = async function(myPassedClassifier){
 
