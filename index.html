@@ -52,7 +52,8 @@
  
  
  <br><br>
-<div id="myDivTest">...</div><br>
+<div id="myDivTest">...</div><canvas id="myInCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
+
 
 Analyse every <input type="number" id="myInterval" value="500" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
@@ -473,7 +474,7 @@ myLoadOneImage  = async function(myURL2){
         img.src = myFileName2
         img.crossOrigin = 'Anonymous'                                                                                            
                                                                                                                                                                                     
-        let can6 = document.getElementById('my32x32CanvasA');
+        let can6 = document.getElementById('myInCanvas');
         let ctx6 = can6.getContext('2d');  
                                                                                                                                                                                                                                                                              
         img.onload = await async function() {
