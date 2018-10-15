@@ -468,16 +468,18 @@ myPredict = async function(){
 
                                                                                            
 myLoadOneImage  = async function(myGroupNumber){ 
+   let myUrlArray = []                                                                                        
    const myIn = document.getElementById('myArray01').value.split('***')                                                                                        
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
       myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
       myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
-      let myI = parseInt(myIncomingImages[myIteration][0])                                                                                     
+      let myI = parseInt(myIncomingImages[myIteration][0])  
+       myUrlArray =  myIncomingImages[myI][2]                                                                                   
    }  //set up myIncomingImages array    **** note: Thisarray only keeps one URL                                                                                     
                                                                                            
                                                                                            
                                                                                            
-      let myFileName2 =  myIncomingImages[myGroupNumber][2]    // the URL                                                                                   
+      let myFileName2 =  myUrlArray[myGroupNumber]    // the URL                                                                                   
       if (myFileName2 != null) {
         let img = new Image()
         img.src = myFileName2
