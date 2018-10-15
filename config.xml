@@ -19,6 +19,8 @@
     
    <access origin="*" />
 
+   <plugin name="cordova-plugin-media-capture" />
+
 
   
   <!-- all platforms -->
