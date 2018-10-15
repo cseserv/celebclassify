@@ -474,10 +474,11 @@ myLoadOneImage  = async function(myGroupNumber){
       myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
       myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
       let myI = parseInt(myIncomingImages[myIteration][0])  
-       myUrlArray =  myIncomingImages[myI][2]                                                                                   
+       myUrlArray[myI] =  myIncomingImages[myIteration][2]   
+                                                                                           
    }  //set up myIncomingImages array    **** note: Thisarray only keeps one URL                                                                                     
                                                                                            
-                                                                                           
+       console.log(myUrlArray)                                                                                    
                                                                                            
       let myFileName2 =  myUrlArray[myGroupNumber]    // the URL                                                                                   
       if (myFileName2 != null) {
