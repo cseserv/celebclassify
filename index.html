@@ -473,12 +473,12 @@ myLoadOneImage  = async function(myURL2){
         img.src = myFileName2
         img.crossOrigin = 'Anonymous'                                                                                            
                                                                                                                                                                                     
-       // let can = document.getElementById('my32x32CanvasA');
-       //  let ctx = can.getContext('2d');  
+        let can6 = document.getElementById('my32x32CanvasA');
+        let ctx6 = can6.getContext('2d');  
                                                                                                                                                                                                                                                                              
         img.onload = await async function() {
-            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
-        }  // img  
+            ctx6.drawImage(img, 0, 0, img.width, img.height, 0, 0, can6.width, can6.height);                                         
+        } 
                                                                                                                 
      }                                                                                         
                                                                                            
