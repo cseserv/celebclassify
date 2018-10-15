@@ -449,7 +449,7 @@ myPredict = async function(){
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
    
                                                                                              
-    myLoadOneImage('https://m.media-amazon.com/images/M/MV5BMTM2NTU2NDI5NF5BMl5BanBnXkFtZTcwMjgzMjA2MQ@@._V1_UY209_CR8,0,140,209_AL_.jpg')                                                                                         
+    myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
                                                                                              
     document.getElementById('myDivTest').innerHTML = 'Group: ' + result.classIndex + ', '+ 
@@ -467,8 +467,17 @@ myPredict = async function(){
 /////////////////////////////////////////// NEW SAVING and LOADING functions ///////////////////////////////////////////                                                                                      
 
                                                                                            
-myLoadOneImage  = async function(myURL2){ 
-      let myFileName2 =  myURL2    //myIncomingImages[myIteration][2]    // the URL                                                                                   
+myLoadOneImage  = async function(myGroupNumber){ 
+   const myIn = document.getElementById('myArray01').value.split('***')                                                                                        
+   for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
+      myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
+      myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
+      let myI = parseInt(myIncomingImages[myIteration][0])                                                                                     
+   }  //set up myIncomingImages array    **** note: Thisarray only keeps one URL                                                                                     
+                                                                                           
+                                                                                           
+                                                                                           
+      let myFileName2 =  myIncomingImages[myGroupNumber][2]    // the URL                                                                                   
       if (myFileName2 != null) {
         let img = new Image()
         img.src = myFileName2
