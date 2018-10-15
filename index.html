@@ -448,7 +448,7 @@ myPredict = async function(){
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
    
                                                                                              
-                                                                                             
+    myLoadOneImage(myIncomingImages[result.classIndex][2])                                                                                         
                                                                                              
                                                                                              
     document.getElementById('myDivTest').innerHTML = 'Group: ' + result.classIndex + ', '+ 
@@ -464,7 +464,25 @@ myPredict = async function(){
                                                                                              
   
 /////////////////////////////////////////// NEW SAVING and LOADING functions ///////////////////////////////////////////                                                                                      
-                                                                                             
+
+                                                                                           
+myLoadOneImage  = async function(myURL2){ 
+      let myFileName2 =  myURL2    //myIncomingImages[myIteration][2]    // the URL                                                                                   
+      if (myFileName2 != null) {
+        let img = new Image()
+        img.src = myFileName2
+        img.crossOrigin = 'Anonymous'                                                                                            
+                                                                                                                                                                                    
+       // let can = document.getElementById('my32x32CanvasA');
+      //  let ctx = can.getContext('2d');  
+                                                                                                                                                                                                                                                                             
+        img.onload = await async function() {
+            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
+        }  // img  
+                                                                                                                
+  }                                                                                         
+                                                                                           
+                                                                                           
                                                                                              
  myDefineClassifierModel = async function(myPassedClassifier){
 
