@@ -399,6 +399,7 @@ myNewTrain = async function(){
                                                                                              
                                                                                              
 myPredict = async function(){
+  document.getElementById('myDivTest').innerHTML = ''
   let scoreThreshold = 0.5   //0.5
   let sizeType = 'sm'      // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
   let modelLoaded = false
@@ -451,7 +452,8 @@ myPredict = async function(){
                                                                                              
                                                                                              
     document.getElementById('myDivTest').innerHTML = 'Group: ' + result.classIndex + ', '+ 
-       Math.round(result.confidences[result.classIndex]*100)+ '% ' + myGroups[result.classIndex]+ '<br>' 
+       Math.round(result.confidences[result.classIndex]*100)+ '% ' + myGroups[result.classIndex]+ '<br>'  + 
+       document.getElementById('myDivTest').innerHTML
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
                                                                                              
