@@ -84,16 +84,16 @@ var app = {
             // console.log('[CanvasCamera start]', 'data', data);
           });
         }
-     document.getElementById('myDivLoss').innerHTML = '' 
+     document.getElementById('myDiv01').innerHTML = ' Camera activated<br>' 
         
      myRunFace() 
-     document.getElementById('myDivLoss').innerHTML += 'myRunFace Done'
+     document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
         
      myClassifierLoad()
-     document.getElementById('myDivLoss').innerHTML += 'my classifier loaded'
+     document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
         
      takeAuto()        
-     document.getElementById('myDivLoss').innerHTML += 'myAuto active'  
+     document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'  
         
     },
     flash: false,
@@ -203,7 +203,7 @@ app.initialize();
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
 <input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
-
+    <div id="myDiv01">...</div>
 
 
  
