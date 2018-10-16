@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+    
+    
+    
+<?xml version='1.0' encoding='utf-8'?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
-    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0
     id          = "com.rocksetta.knn-celebrity"
     versionCode = "10"
     version     = "1.03.07" >      <!-- Change this before each compile -->
@@ -14,39 +17,40 @@
       Jeremy Ellis
   </author>
   
-   <!-- Core plugins -->
-
-  <!--  <gap:plugin name="cordova-plugin-camera" source="npm" version="4.0.3" /> -->
-    
-  <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" /> 
-  
     
     
     
-  <gap:plugin name="cordova-plugin-whitelist" source="npm"/> <!-- Yes this is needed -->
     
-   <access origin="*" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
-    <string>need camera access to take pictures</string>
-</edit-config>
-
-  
-  <!-- all platforms -->
-  <preference name="phonegap-version" value="cli-8.0.0" />  
-
- 
-  <preference name="orientation" value="default" />
-  <preference name="fullscreen" value="true" />
-
-
-
-  <!-- Android only -->
-
-  <preference name="android-installLocation" value="auto" />
-  
-  
-
-  
-  
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
