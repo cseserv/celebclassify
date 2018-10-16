@@ -8,7 +8,7 @@
 <!-- Load KNN Classifier from here -->
 <script src="knn-classifier0-2-2.js"></script> 
     
-
+<h3 align=center>Party App: Celebrity Face Match</h3>
 
 <input type="button" value="Load Face-api.js face_landmark_68_tiny_model" style="background-color:lime" onclick="{
    myRunFace() 
@@ -23,22 +23,18 @@
 
 <input type="button" id="myButtonActivateWebCam" value="Activate WebCam" onclick="{getVideo()}"> 
 <input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }"> <br><br>
- 
- Train a few items with a group number and a text label<br>
-<input type="button" value="Train. Get close, no bounding box used" onclick="{myNewTrain()}"> 
-<input type="number" value="0" size="3" id="myClassNumber" onchange="{
-   myTextChange()                                                       
-}">
-<input type="text" id="myClassText" placeholder="Label for this trained class: example Cell Phone" value="Joe Smith"><br><br>
 
- 
-<input type="button" value="Save Classifier" onclick="{myClassifierSave()}"> <br><br>
  
 <input type="text" id="myInFile" size="120" value="models/myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
  
+Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
+<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
+<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
+
+
 
  
 <video id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
@@ -50,30 +46,16 @@
 
 <div id="myDivLoss">...</div><br> 
  
- 
- <br><br>
+
 <canvas id="myInCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
 <div id="myDivTest">...</div><br>
-
-Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
-<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
-<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
-
 
 
 
  
 <div id="myDivSummary">...</div><br><br>
 
-
-<input type="button" value="Load Group" onclick="{
-   myLoadManyImages()                                              
-}">
- <input type="button" value="Check Training" onclick="{
-  myCheckGroups()                                                                                                 
-}">  <br>
-To get faces use google search but set "tools" from "Not filtered by License" to "Labelled for reuse" I also set "any Size" to "medium"<br>
- <textarea id="myArray01" rows="10" cols="170">0,Megan_Fox,https://m.media-amazon.com/images/M/MV5BMTc5MjgyMzk4NF5BMl5BanBnXkFtZTcwODk2OTM4Mg@@._V1_UY209_CR3,0,140,209_AL_.jpg***  
+<textarea id="myArray01" rows="10" cols="170" stye="display:none:">0,Megan_Fox,https://m.media-amazon.com/images/M/MV5BMTc5MjgyMzk4NF5BMl5BanBnXkFtZTcwODk2OTM4Mg@@._V1_UY209_CR3,0,140,209_AL_.jpg***  
 0,Megan_Fox,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezKBWzw2Svr0-iHLi4ZHmxMqJWxAFcNLzzaf_0uomkDRBH2n5***  
 1,Mila_Kunis,https://m.media-amazon.com/images/M/MV5BODQyNTQyNzY4MV5BMl5BanBnXkFtZTcwODg5MDA3MQ@@._V1_UY209_CR17,0,140,209_AL_.jpg***
 2,Amanda_Seyfried,https://m.media-amazon.com/images/M/MV5BMjUyODkwODUyMF5BMl5BanBnXkFtZTcwMzU3MjYxMw@@._V1_UY209_CR22,0,140,209_AL_.jpg***
