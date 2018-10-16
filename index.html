@@ -180,7 +180,7 @@ app.initialize();
 
 
  
-<input type="hidden" id="myInFile" size="120" value="www/models/myClassifierModel01.json"> <br>
+<input type="hidden" id="myInFile" size="120" value="models/myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
@@ -509,10 +509,10 @@ myRunFace = async function() {
    console.log('knn-classigfier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('www/models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('www/models')
+   await faceapi.loadTinyYolov2Model('models')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
