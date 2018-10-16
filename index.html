@@ -41,10 +41,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        document.getElementById('myButtonAuto').addEventListener('click', (function() {
-           // this.onPlay();
-           takeAuto() 
-        }).bind(this), false);        
         document.getElementById('play').addEventListener('click', (function() {
             this.onPlay();
         }).bind(this), false);
@@ -193,7 +189,7 @@ app.initialize();
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
  
-Analyse every <input type="number" id="myInterval" value="500" size="5"> milliseconds<br>
+Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
 <input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
 
@@ -583,7 +579,7 @@ myPredict = async function(){
                                                                                            
                          
   let myCanvasGap = document.getElementById('fullsize');
-  let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+ // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
   //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
                                                                                            
                                                                                            
@@ -615,7 +611,7 @@ myPredict = async function(){
                                                                                            
                                                                                            
                                 
- // let myCanvasGap = document.getElementById('fullsize');
+  let myCanvasGap = document.getElementById('fullsize');
  // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
   //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
                                                                                            
@@ -875,7 +871,7 @@ getVideo = async function() {
                                                                                              
                                                                                              
 
-  */  
+
                                                                                              
 takeAuto = async function(){   
     document.getElementById('myDivTest').innerHTML = ''                                                                                       
@@ -891,7 +887,7 @@ myStopAuto  = async function(){
     clearInterval(myStoredInterval)    
 }                                                                                            
   
-                                                                                         
+  */                                                                                           
                                                                                              
                                                                                              
  ///////////////////////////////////////////// Done Webcam functions ////////////////////////////////////////                                                                                               
