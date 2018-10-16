@@ -84,13 +84,16 @@ var app = {
             // console.log('[CanvasCamera start]', 'data', data);
           });
         }
+     document.getElementById('myDivLoss').innerHTML = '' 
         
      myRunFace() 
-
-     myClassifierLoad()
-
-     takeAuto()      
+     document.getElementById('myDivLoss').innerHTML += 'myRunFace Done'
         
+     myClassifierLoad()
+     document.getElementById('myDivLoss').innerHTML += 'my classifier loaded'
+        
+     takeAuto()        
+     document.getElementById('myDivLoss').innerHTML += 'myAuto active'  
         
     },
     flash: false,
@@ -879,7 +882,7 @@ getVideo = async function() {
                                                                                              
                                                                                              
 
-
+  */ 
                                                                                              
 takeAuto = async function(){   
     document.getElementById('myDivTest').innerHTML = ''                                                                                       
@@ -895,7 +898,7 @@ myStopAuto  = async function(){
     clearInterval(myStoredInterval)    
 }                                                                                            
   
-  */                                                                                           
+                                                                                          
                                                                                              
                                                                                              
  ///////////////////////////////////////////// Done Webcam functions ////////////////////////////////////////                                                                                               
