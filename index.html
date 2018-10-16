@@ -189,7 +189,7 @@ app.initialize();
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
  
-Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
+Analyse every <input type="number" id="myInterval" value="500" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
 <input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
 
@@ -579,7 +579,7 @@ myPredict = async function(){
                                                                                            
                          
   let myCanvasGap = document.getElementById('fullsize');
- // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+  let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
   //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
                                                                                            
                                                                                            
@@ -611,7 +611,7 @@ myPredict = async function(){
                                                                                            
                                                                                            
                                 
-  let myCanvasGap = document.getElementById('fullsize');
+ // let myCanvasGap = document.getElementById('fullsize');
  // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
   //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
                                                                                            
