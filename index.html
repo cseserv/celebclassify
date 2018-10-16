@@ -183,14 +183,6 @@ app.initialize();
 
 
 
-<select size="1" id="myCheck">
- <option value="environment">Rear Mobile Camera
- </option><option value="user">Front Mobile Camera
-</option></select>
-
-<input type="button" id="myButtonActivateWebCam" value="Activate WebCam" onclick="{getVideo()}"> 
-<input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }"> <br><br>
-
  
 <input type="hidden" id="myInFile" size="120" value="models/myClassifierModel01.json"> <br>
 
@@ -825,7 +817,7 @@ myClassifierLoad  = async function(){
 var myVideoStream = document.getElementById('myVideoElement')     // make it a global variable
 var myStoredInterval = 0
 
-                                                                                             
+  /*                                                                                           
                                                                                              
 stopVideo = async function() {  
   clearInterval(myStoredInterval)   // god idea to stop the auto snapshot taking                                                                                         
@@ -871,7 +863,7 @@ myStopAuto  = async function(){
     clearInterval(myStoredInterval)    
 }                                                                                            
   
-                                                                                             
+  */                                                                                           
                                                                                              
                                                                                              
  ///////////////////////////////////////////// Done Webcam functions ////////////////////////////////////////                                                                                               
