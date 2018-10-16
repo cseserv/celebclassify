@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.rocksetta.knn-celebrity"
     versionCode = "10"
-    version     = "1.03.06" >      <!-- Change this before each compile -->
+    version     = "1.03.07" >      <!-- Change this before each compile -->
 
   <name>Party App: Celebrity Face Match</name>
   <description>
@@ -16,9 +16,9 @@
   
    <!-- Core plugins -->
 
- <!--  <gap:plugin name="cordova-plugin-camera" source="npm" version="4.0.3" /> -->
+   <gap:plugin name="cordova-plugin-camera" source="npm" version="4.0.3" /> 
     
-   <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" />
+ <!--  <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" /> -->
   
     
     
