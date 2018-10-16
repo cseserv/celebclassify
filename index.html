@@ -48,7 +48,7 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
  
 
 <canvas id="myInCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
-<div id="myDivTest">...</div><br>
+<div id="myDivTest" style="width:300px;  height:400px;">...</div><br>
 
 
 
@@ -439,8 +439,8 @@ myPredict = async function(){
   //     document.getElementById('myDivTest').innerHTML
                                                                                            
                   
-    document.getElementById('myDivTest').innerHTML += Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
-      myGroups[result.classIndex]+ '<br>' /// + document.getElementById('myDivTest').innerHTML                                                                                        
+    document.getElementById('myDivTest').innerHTML = Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
+      myGroups[result.classIndex]+ '<br>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
