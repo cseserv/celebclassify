@@ -15,6 +15,21 @@
   </author>
   
   
+  <!-- all platforms -->
+  <preference name="phonegap-version" value="cli-8.0.0" />  
+
+ 
+  <preference name="orientation" value="default" />
+  <preference name="fullscreen" value="true" />
+
+
+
+  <!-- Android only -->
+
+  <preference name="android-installLocation" value="auto" />
+    
+    
+    <!-- needed for camera? -->  
 
     <content src="index.html" />
     <access origin="*" />
