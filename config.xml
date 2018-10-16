@@ -5,7 +5,7 @@
     versionCode = "10"
     version     = "1.02.06" >      <!-- Change this before each compile -->
 
-  <name>KNN-celebrity</name>
+  <name>Party App: Celebrity Face Match</name>
   <description>
       Tensorflowjs in an Android App
   </description>
