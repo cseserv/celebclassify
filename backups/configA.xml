@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.rocksetta.knn-celebrity"
+    versionCode = "10"
+    version     = "1.03.07" >      <!-- Change this before each compile -->
+
+  <name>Party App: Celebrity Face Match</name>
+  <description>
+      Tensorflowjs in an Android App
+  </description>
+  
+  <author href="http://rocksetta.com">
+      Jeremy Ellis
+  </author>
+  
+   <!-- Core plugins -->
+
+  <!--  <gap:plugin name="cordova-plugin-camera" source="npm" version="4.0.3" /> -->
+    
+  <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" /> 
+  
+    
+    
+    
+  <gap:plugin name="cordova-plugin-whitelist" source="npm"/> <!-- Yes this is needed -->
+    
+   <access origin="*" />
+
+<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need camera access to take pictures</string>
+</edit-config>
+
+  
+  <!-- all platforms -->
+  <preference name="phonegap-version" value="cli-8.0.0" />  
+
+ 
+  <preference name="orientation" value="default" />
+  <preference name="fullscreen" value="true" />
+
+
+
+  <!-- Android only -->
+
+  <preference name="android-installLocation" value="auto" />
+  
+  
+
+  
+  
+</widget>
