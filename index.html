@@ -41,6 +41,10 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        document.getElementById('myButtonAuto').addEventListener('click', (function() {
+           // this.onPlay();
+           takeAuto() 
+        }).bind(this), false);        
         document.getElementById('play').addEventListener('click', (function() {
             this.onPlay();
         }).bind(this), false);
