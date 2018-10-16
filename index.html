@@ -188,31 +188,6 @@ app.initialize();
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
  
-Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
-<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
-<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
-
-
-
- 
-<video id="myVideoElement" width="320" height="320" ; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
-<canvas id="my32x32CanvasA" width="320" height="320"  border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
-
-<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
-<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
-
-<!-- <div id="myDivLoss">...</div><br> -->
- 
-
-<canvas id="myInCanvas" width="320" height="320"  border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
-<div id="myDivTest" style="width:300px;  height:400px;">...</div><br>
-
-
-
- 
-<!-- <div id="myDivSummary">...</div><br><br>   -->
-
 <textarea id="myArray01" rows="10" cols="170" >0,Megan_Fox,https://m.media-amazon.com/images/M/MV5BMTc5MjgyMzk4NF5BMl5BanBnXkFtZTcwODk2OTM4Mg@@._V1_UY209_CR3,0,140,209_AL_.jpg***  
 0,Megan_Fox,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezKBWzw2Svr0-iHLi4ZHmxMqJWxAFcNLzzaf_0uomkDRBH2n5***  
 1,Mila_Kunis,https://m.media-amazon.com/images/M/MV5BODQyNTQyNzY4MV5BMl5BanBnXkFtZTcwODg5MDA3MQ@@._V1_UY209_CR17,0,140,209_AL_.jpg***
