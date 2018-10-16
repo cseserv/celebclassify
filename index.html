@@ -29,12 +29,14 @@ var app = {
         document.getElementById('switch').addEventListener('click', (function() {
             this.onSwitch();
         }).bind(this), false);
-
+        document.getElementById('torch').addEventListener('click', (function() {
+            this.onTorch();
+        }).bind(this), false);
 
         if (window.plugin.CanvasCamera) {
           window.plugin.CanvasCamera.initialize({
                 fullsize: window.document.getElementById('fullsize'),
-               // thumbnail: window.document.getElementById('thumbnail')
+                thumbnail: window.document.getElementById('thumbnail')
           });
         }
     },
@@ -43,17 +45,17 @@ var app = {
         if (window.plugin.CanvasCamera) {
            var options = {
               canvas: {
-                width: 320,
-                height: 3200
+                width: 640,
+                height: 480
               },
               capture: {
-                width: 320,
-                height: 320
+                width: 640,
+                height: 480
               },
               use: 'file',
               fps: 30,
               flashMode: this.flash,
-              hasThumbnail: false,
+              hasThumbnail: true,
               thumbnailRatio: 1/6,
               cameraFacing: this.position
           };
@@ -65,6 +67,17 @@ var app = {
         }
     },
     flash: false,
+    onTorch: function() {
+        console.log('torch');
+        if (window.plugin.CanvasCamera) {
+            this.flash = (this.flash) ? false : true;
+            window.plugin.CanvasCamera.flashMode(this.flash, function(error) {
+              console.log('[CanvasCamera flashMode]', 'error', error);
+            }, function(data) {
+              console.log('[CanvasCamera flashMode]', 'data', data);
+            });
+        }
+    },
     position: 'back',
     onSwitch: function() {
         console.log('switch');
@@ -98,7 +111,15 @@ app.initialize();
 
 <html>
   <head>
-
+      <!--
+      Customize this policy to fit your own app's needs. For more guidance, see:
+          https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+      Some notes:
+          * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+          * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+          * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+              * Enable inline JS: add 'unsafe-inline' to default-src
+      -->
       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
       <meta name="format-detection" content="telephone=no">
       <meta name="msapplication-tap-highlight" content="no">
@@ -110,10 +131,12 @@ app.initialize();
 <div class="app">
     <div id="deviceready">
         <canvas class="raster" id="fullsize"></canvas>
+        <canvas class="raster" id="thumbnail"></canvas>
         <div class="actions">
             <div class="action play" id="play">Play</div>
             <div class="action switch" id="switch">Switch</div>
             <div class="action stop" id="stop">Stop</div>
+            <div class="action torch" id="torch">Torch</div>
         </div>
     </div>
 </div>
