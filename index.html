@@ -86,6 +86,9 @@ var app = {
         }
      document.getElementById('myDiv01').innerHTML = ' Camera activated<br>' 
         
+     myTest() 
+     document.getElementById('myDiv01').innerHTML += 'myTest Done<br>'
+        
      myRunFace() 
      document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
         
@@ -404,6 +407,10 @@ myCheckGroups   = async function() {
                                                                                              
                                                                                              
                                                                                              
+                                                                                             
+myTest = async function() { 
+  document.getElementById('myDiv01').innerHTML += 'The test is running' 
+}    
                                                                                              
 myLoadManyImages = async function() {
   
