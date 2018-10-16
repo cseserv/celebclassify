@@ -15,9 +15,9 @@
   </author>
   
    <!-- Core plugins -->
-    
-    <plugin name="cordova-plugin-camera" spec="1.2.0" source="pgb" />
-    
+
+   <gap:plugin name="cordova-plugin-camera" source="npm" version="4.0.3" />
+ 
   
     
     
