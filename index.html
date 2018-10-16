@@ -1,116 +1,146 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
-<script type="text/javascript" charset="utf-8">
-
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    function onDeviceReady() {
-        alert('Camera device ready to use');
-    }
-  
-
-    // onSuccess: Get a snapshot of the current acceleration
+<script>
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
     //
-    
-    
-    
-        function onURISuccess(imageURI) {
-     alert('photo URI success')   
-   document.getElementById('myImage1').src = imageURI;
-
-      
-    }
-
-    // onError: Failed to get the acceleration
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
     //
-    function onCameraError(message) {
-        alert('Failed because: ' + message)
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        document.getElementById('play').addEventListener('click', (function() {
+            this.onPlay();
+        }).bind(this), false);
+        document.getElementById('stop').addEventListener('click', (function() {
+            this.onStop();
+        }).bind(this), false);
+        document.getElementById('switch').addEventListener('click', (function() {
+            this.onSwitch();
+        }).bind(this), false);
+        document.getElementById('torch').addEventListener('click', (function() {
+            this.onTorch();
+        }).bind(this), false);
+
+        if (window.plugin.CanvasCamera) {
+          window.plugin.CanvasCamera.initialize({
+                fullsize: window.document.getElementById('fullsize'),
+                thumbnail: window.document.getElementById('thumbnail')
+          });
+        }
+    },
+    onPlay: function() {
+        console.log('play');
+        if (window.plugin.CanvasCamera) {
+           var options = {
+              canvas: {
+                width: 640,
+                height: 480
+              },
+              capture: {
+                width: 640,
+                height: 480
+              },
+              use: 'file',
+              fps: 30,
+              flashMode: this.flash,
+              hasThumbnail: true,
+              thumbnailRatio: 1/6,
+              cameraFacing: this.position
+          };
+          window.plugin.CanvasCamera.start(options, function(error) {
+            console.log('[CanvasCamera start]', 'error', error);
+          }, function(data) {
+            // console.log('[CanvasCamera start]', 'data', data);
+          });
+        }
+    },
+    flash: false,
+    onTorch: function() {
+        console.log('torch');
+        if (window.plugin.CanvasCamera) {
+            this.flash = (this.flash) ? false : true;
+            window.plugin.CanvasCamera.flashMode(this.flash, function(error) {
+              console.log('[CanvasCamera flashMode]', 'error', error);
+            }, function(data) {
+              console.log('[CanvasCamera flashMode]', 'data', data);
+            });
+        }
+    },
+    position: 'back',
+    onSwitch: function() {
+        console.log('switch');
+        if (window.plugin.CanvasCamera) {
+            this.position = (this.position === 'front') ? 'back' : 'front';
+            window.plugin.CanvasCamera.cameraPosition(this.position, function(error) {
+                console.log('[CanvasCamera cameraPosition]', error);
+            }, function(data) {
+                console.log('[CanvasCamera cameraPosition]', 'data', data);
+            });
+        }
+    },
+    onStop: function() {
+        console.log('stop');
+        if (window.plugin.CanvasCamera) {
+            window.plugin.CanvasCamera.stop(function(error) {
+                console.log('[CanvasCamera stop]', 'error', error);
+            }, function(data) {
+                console.log('[CanvasCamera stop]', 'data', data);
+            });
+        }
     }
-    
-    
-    
-    function onDataSuccess(imageData) {
-     alert('photo data success')   
-     document.getElementById('myImage2').src =  "data:image/jpeg;base64," + imageData;
-    // var image = document.getElementById('myImage1');
-    // image.src = imageURI;
+};
 
-      
-    }
-
-
-    
-
+app.initialize();
 
 
 </script>
-</head>
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <!--
+      Customize this policy to fit your own app's needs. For more guidance, see:
+          https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+      Some notes:
+          * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+          * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+          * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+              * Enable inline JS: add 'unsafe-inline' to default-src
+      -->
+      <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+      <meta name="format-detection" content="telephone=no">
+      <meta name="msapplication-tap-highlight" content="no">
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+      <title>Canvas Camera Demo</title>
+  </head>
 <body>
-<font style="font-size:30px">  
-
-<h3>Using the Camera with Phonegap Build</h3>
-
-Image URI:<img  id="myImage1"   style="display:block; width:300px; height:200px;" src="" /><br>
-Image Data:<img  id="myImage2"   style="display:block; width:500px; height:400px;" src="" /><br>
-
-   
-
-<input type=button value="Picture as URI" style="font-size:30px" onclick="{
-
-        navigator.camera.getPicture(onURISuccess, onCameraError, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-  
-}">
+<div class="app">
+    <div id="deviceready">
+        <canvas class="raster" id="fullsize"></canvas>
+        <canvas class="raster" id="thumbnail"></canvas>
+        <div class="actions">
+            <div class="action play" id="play">Play</div>
+            <div class="action switch" id="switch">Switch</div>
+            <div class="action stop" id="stop">Stop</div>
+            <div class="action torch" id="torch">Torch</div>
+        </div>
+    </div>
+</div>
 
 
-
-   
-
-<input type=button value="Picture As Data" style="font-size:30px" onclick="{
-
-       navigator.camera.getPicture(onDataSuccess, onCameraError, { quality: 50, allowEdit: true, destinationType: Camera.DestinationType.DATA_URL});
- 
-  
-}">
-
- 
-
-
-
-
-
-<br>At the bottom of every page make sure you include the following button:<br>
-
-<input type=button value="Back" style="font-size:25px" onclick="{window.history.back()}"><br><br>
-   
-       
-</font>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
