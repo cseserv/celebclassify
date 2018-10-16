@@ -550,8 +550,22 @@ myPredict = async function(){
   let forwardTimes = []
                                                                                              
   let myCanvasElement = document.getElementById('my32x32CanvasA');
-  let myCTX = myCanvasElement.getContext('2d');                                                                                             
-  myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+  let myCTX = myCanvasElement.getContext('2d');      
+ 
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                              
+                                                                                           
+                                                                                           
+                         
+  let myCanvasGap = document.getElementById('fullsize');
+ // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+  //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
+                                                                                           
+                                                                                           
+    
+  myCTX.drawImage(myCanvasGap, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+ // myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height); 
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                              
+                                                                                        
                                                                                             
   if (classifier.getNumClasses() >= 1){    // have groups to rate
                                             
@@ -570,7 +584,24 @@ myPredict = async function(){
                                                                                              
      let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
      let myCTX4 = myCanvasElement4.getContext('2d');
-     myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+                                                                                           
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                        
+                                                                                           
+                                                                                           
+                                
+  let myCanvasGap = document.getElementById('fullsize');
+ // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+  //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
+                                                                                           
+                                                                                           
+    
+myCTX4.drawImage(myCanvasGap, 0, 0, myCanvasElement4.width, myCanvasElement4.height);                                                                                     
+                                                                                           
+                                                                                           
+  
+   //  myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////     
+                                                                                           
                                       
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
