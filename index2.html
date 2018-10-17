@@ -28,7 +28,7 @@
 <input type="hidden" id="myInFile" size="120" value="./myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
- 
+ ...
  
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
@@ -222,14 +222,14 @@ myCheckGroups   = async function() {
 myShowHide = async function() {
     if ( myShowDataPoints) {
        document.getElementById('my32x32CanvasA').style.display = 'none'  
-       document.getElementById('myFaceCanvas').style.display = 'none'  
-       document.getElementById('myVideoAsCanvas').style.display = 'none'  
-       document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
+      // document.getElementById('myFaceCanvas').style.display = 'none'  
+      // document.getElementById('myVideoAsCanvas').style.display = 'none'  
+      // document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
     } else {
       document.getElementById('my32x32CanvasA').style.display = 'inline'   
-      document.getElementById('myFaceCanvas').style.display = 'inline'   
-      document.getElementById('myVideoAsCanvas').style.display = 'inline'   
-      document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
+     // document.getElementById('myFaceCanvas').style.display = 'inline'   
+     // document.getElementById('myVideoAsCanvas').style.display = 'inline'   
+     // document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
     }
 }                                                                                           
                                                                                            
