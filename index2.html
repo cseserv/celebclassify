@@ -221,9 +221,15 @@ myCheckGroups   = async function() {
 
 myShowHide = async function() {
     if ( myShowDataPoints) {
-       document.getElementById('my32x32CanvasA').style.display = 'none'                                                                                    
+       document.getElementById('my32x32CanvasA').style.display = 'none'  
+       document.getElementById('myFaceCanvas').style.display = 'none'  
+       document.getElementById('myVideoAsCanvas').style.display = 'none'  
+       document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
     } else {
-      document.getElementById('my32x32CanvasA').style.display = 'inline'                                                                                        
+      document.getElementById('my32x32CanvasA').style.display = 'inline'   
+      document.getElementById('myFaceCanvas').style.display = 'inline'   
+      document.getElementById('myVideoAsCanvas').style.display = 'inline'   
+      document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
     }
 }                                                                                           
                                                                                            
@@ -460,7 +466,8 @@ myPredict = async function(){
       console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
          console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])   
-         myStopAuto()                                                                                     
+         myStopAuto()    
+         document.getElementById('myDivTest').innerHTML = 'Stopping App: Matches Duplicated <br><br>' +document.getElementById('myDivTest').innerHTML =                                                                                  
       }  
     }                                                                                       
     myLoadOneImage(result.classIndex)                                                                                         
