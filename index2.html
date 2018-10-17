@@ -588,7 +588,7 @@ myLoadOneImage  = async function(myGroupNumber){
  
    console.log('Define Model')                                                                                                                                                                                       
    const myClassifierModel = tf.model({inputs: myLayerList[1], outputs: myConcatenate1Dense4});    // This would be a global model. With list of inputs as an array                                                                                                                                                                                         
-   myClassifierModel.summary()
+   //myClassifierModel.summary()    // show a summary of the load
    console.log('myClassifierModel.layers[myMaxClasses]')     
    console.log(myClassifierModel.layers[myMaxClasses])
    myPassedClassifier.getClassifierDataset()[0].print(true)                                                                                            
