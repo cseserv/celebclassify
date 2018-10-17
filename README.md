@@ -1,7 +1,10 @@
 # celebclassify
 
 
-https://hpssjellis.github.io/celebclassify/index.html
+https://hpssjellis.github.io/celebclassify/index2.html
 
 
-https://hpssjellis.github.io/celebclassify/celeb-train-save.html
+or load the app from phonegap build
+
+
+
