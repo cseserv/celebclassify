@@ -725,6 +725,7 @@ getVideo = async function() {
 
                                                                                              
 takeAuto = async function(){   
+     document.body.style.backgroundColor = 'white'                                                                                     
      myMatchCount = -1    // reset match array
      myMatchArray.length = 0                                                 
     console.log(myMatchArray)                                                                                       
@@ -740,7 +741,8 @@ takeAuto = async function(){
 myStopAuto  = async function(){ 
      myMatchCount = -1    // reset match array
      myMatchArray.length = 0                                                                                         
-    clearInterval(myStoredInterval)    
+    clearInterval(myStoredInterval)  
+    document.body.style.backgroundColor = 'blue'                                                                                       
 }                                                                                            
   
                                                                                              
