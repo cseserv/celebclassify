@@ -179,13 +179,13 @@ app.initialize();
     
     
 <!-- Load Tensorflowjs from here -->
-<script src="tfjs13-1.js"> </script> 
+<script src="script2/tfjs13-1.js"> </script> 
 
 <!-- Load face-api from here -->
-<script src="face-api.min.js"></script>
+<script src="script2/face-api.min.js"></script>
 
 <!-- Load KNN Classifier from here -->
-<script src="knn-classifier0-2-2.js"></script> 
+<script src="script2/knn-classifier0-2-2.js"></script> 
 
 
     
@@ -527,10 +527,10 @@ myRunFace = async function() {
    console.log('knn-classigfier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/advanced-keras/face/models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/advanced-keras/face/muehler/models')
+   await faceapi.loadTinyYolov2Model('models')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
