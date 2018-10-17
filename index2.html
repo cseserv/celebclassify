@@ -438,9 +438,16 @@ myPredict = async function(){
   //     Math.round(result.confidences[result.classIndex]*100)+ '% ' + myGroups[result.classIndex]+ '<br>'  + 
   //     document.getElementById('myDivTest').innerHTML
                                                                                            
-                  
-    document.getElementById('myDivTest').innerHTML = Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
-      myGroups[result.classIndex]+ '<br>' + document.getElementById('myDivTest').innerHTML                                                                                        
+                     
+  //  document.getElementById('myDivTest').innerHTML = Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
+   //   myGroups[result.classIndex]+ '<br>' + document.getElementById('myDivTest').innerHTML   
+                                                                                           
+                                                                                           
+                                                                                           
+    document.getElementById('myDivTest').innerHTML =  `<div onclick={
+                                                                                           
+      alert('cool')                                                                                     
+   }>`+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
