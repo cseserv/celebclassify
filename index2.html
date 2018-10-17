@@ -187,7 +187,9 @@ let newArray = []
 let newArray2 = []  
 let myFaceToClose = 0    // pixels to make bounding box bigger
 let myIncomingClassifier = []    
-let myIncomingImages = []                                                                                             
+let myIncomingImages = []  
+let myMatchArray = []     
+let myMatchCount = 0                                                                                           
 
  ///////////////////////////////////// Canvas and video elements ////////////////////////////////                                                                                                   
                                                                                              
@@ -429,8 +431,12 @@ myPredict = async function(){
      const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 2);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
-   
-                                                                                             
+    myMatchCount += 1
+    myMatchArray[myMatchCount] = result.classIndex  
+    if (myMatchCount > 10){
+          console.log(myMatchCount + ', ' +result.classIndex)                                                                                 
+      myStopAuto()                                                                                     
+     }                                                                                       
     myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
                                                                                              
@@ -445,7 +451,7 @@ myPredict = async function(){
                                                                                          
   //  document.getElementById('myDivTest').innerHTML =  '<div color=red onclick={myLoadOneImage('+result.classIndex+')}>...'+myGroups[result.classIndex]+ '...</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
-    document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>'+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
+    document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>'+myMatchCount+': '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
                                                                                            
   } // end box drawing OK                                                                                             
