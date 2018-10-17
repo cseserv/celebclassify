@@ -467,7 +467,8 @@ myPredict = async function(){
     for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
       console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
-         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])   
+         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
+         document.getElementById('myDivTest').innerHTML = 'Stopping App: Double Match Found<br><br>'+ document.getElementById('myDivTest').innerHTML =                                                                                  
          myStopAuto()                                                                                     
       }  
     }                                                                                       
