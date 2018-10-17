@@ -716,6 +716,9 @@ getVideo = async function() {
                                                                                              
 takeAuto = async function(){   
     myMatchCount = -1 
+     for (let myIt = 0 ; myIt < myMatchArray.length; myIt++){ 
+          myMatchArray[myIt]   =  null                          // delete the match array                                                       
+     }                                                                                       
     document.getElementById('myDivTest').innerHTML = ''                                                                                       
     myStoredInterval = setInterval(async function(){                                                                                         
        await myPredict()                                                                                   
