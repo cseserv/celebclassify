@@ -474,7 +474,7 @@ myPredict = async function(){
       console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
          console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
-         document.getElementById('myDivTest').innerHTML = 'Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
+         document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
          myStopAuto()                                                                                     
       }  
     }                                                                                       
@@ -715,10 +715,9 @@ getVideo = async function() {
 
                                                                                              
 takeAuto = async function(){   
-    myMatchCount = -1 
-     for (let myIt = 0 ; myIt < myMatchArray.length; myIt++){ 
-          myMatchArray[myIt]   =  null                          // delete the match array                                                       
-     }                                                                                       
+     myMatchCount = -1    // reset match array
+     myMatchArray.length = 0                                                 
+    console.log(myMatchArray[myIt])                                                                                       
     document.getElementById('myDivTest').innerHTML = ''                                                                                       
     myStoredInterval = setInterval(async function(){                                                                                         
        await myPredict()                                                                                   
@@ -728,7 +727,9 @@ takeAuto = async function(){
    
                                                                                              
                                                                                              
-myStopAuto  = async function(){                                                                                             
+myStopAuto  = async function(){ 
+     myMatchCount = -1    // reset match array
+     myMatchArray.length = 0                                                                                         
     clearInterval(myStoredInterval)    
 }                                                                                            
   
