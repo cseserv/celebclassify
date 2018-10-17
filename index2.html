@@ -368,7 +368,17 @@ myRunFace = async function() {
    console.log('loadTinyYolov2Model loaded')
                                                                                            
    myShowHide()  
-   console.log('Hiding Data Images')                                                                                 
+   console.log('Hiding Data Images')   
+
+   await myClassifierLoad()
+   console.log('Classifier Loaded')  
+   await getVideo()
+   console.log('Webcam active')  
+   await takeAuto() 
+   console.log('Interrval Active')                                                                                           
+                                                                                           
+                                                                                           
+                                                                                           
 }
 
 
@@ -770,15 +780,7 @@ myStopAuto  = async function(){
 <!-- If you replaced the <style> tag with a <script> tag don't forget to change the above line to just </script>  -->
  
  
- <script>
-                                                                                              
-    (async function() {                                                                
-        await myRunFace() 
-        await myClassifierLoad()
-        await getVideo()
-        await takeAuto()
-   }  )()   
-</script>
+
  
  
  
