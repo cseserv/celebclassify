@@ -33,9 +33,8 @@
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
 <input type="button" value="Stop Auto" onclick="{myStopAuto()}">
-<input type=checkbox id="myCheck01" onclick="{
-    if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
-    console.log(myShowDataPoints)                                         
+<input type=checkbox id="myCheck01" onclick="{                                            
+    myChangeCheckBox()                                                                               
 }">Show zoomed 68 data points<br>
 
 
@@ -195,6 +194,11 @@ let myMatchArray = []
 let myMatchCount = -1 
 let myShowDataPoints = false
 
+                                                                                           
+                                                                                           
+                                                                                           
+                                                                                           
+                                                                                           
  ///////////////////////////////////// Canvas and video elements ////////////////////////////////                                                                                                   
                                                                                              
                                                                                              
@@ -214,7 +218,11 @@ myCheckGroups   = async function() {
    } 
  }                                                                                            
                                                                                              
-                                                                                             
+
+ myChangeCheckBox = async function() {                                                                                          
+     if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
+    console.log(myShowDataPoints)                                                                                             
+}                                                                                           
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
