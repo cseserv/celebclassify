@@ -432,11 +432,13 @@ myPredict = async function(){
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
     myMatchCount += 1
-    myMatchArray[myMatchCount] = result.classIndex  
-    if (myMatchCount > 10){
-          console.log(myMatchCount + ', ' +result.classIndex)                                                                                 
-      myStopAuto()                                                                                     
-     }                                                                                       
+    myMatchArray[myMatchCount] = result.classIndex 
+    for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
+      console.log(myMatchArray[myIt] + ', ' +myMatchArray[myMatchCount])                                                                                              
+      if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before                                                                              
+         myStopAuto()                                                                                     
+      }  
+    }                                                                                       
     myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
                                                                                              
