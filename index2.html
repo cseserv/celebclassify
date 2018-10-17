@@ -222,15 +222,15 @@ myCheckGroups   = async function() {
                                                                                            
 myShowHide = async function() {
     if ( myShowDataPoints) {
-       document.getElementById('my32x32CanvasA').style.display = 'none'  
-      // document.getElementById('myFaceCanvas').style.display = 'none'  
-      // document.getElementById('myVideoAsCanvas').style.display = 'none'  
-      // document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
+       document.getElementById('my32x32CanvasA').style.display = 'inline'  
+       document.getElementById('myFaceCanvas').style.display = 'inline'  
+       document.getElementById('myVideoAsCanvas').style.display = 'inline'  
+       document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                    
     } else {
-      document.getElementById('my32x32CanvasA').style.display = 'inline'   
-     // document.getElementById('myFaceCanvas').style.display = 'inline'   
-     // document.getElementById('myVideoAsCanvas').style.display = 'inline'   
-     // document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
+      document.getElementById('my32x32CanvasA').style.display = 'none'   
+      document.getElementById('myFaceCanvas').style.display = 'none'   
+      document.getElementById('myVideoAsCanvas').style.display = 'none'   
+      document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                       
     }
 }                                                                                           
                                                                                            
@@ -361,7 +361,8 @@ myRunFace = async function() {
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
                                                                                            
-       myShowHide()                                                                                   
+   myShowHide()  
+   console.log('Hiding Data Images')                                                                                 
 }
 
 
