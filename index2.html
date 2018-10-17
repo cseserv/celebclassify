@@ -219,9 +219,26 @@ myCheckGroups   = async function() {
  }                                                                                            
                                                                                              
 
+                                                                                           
+myShowHide = async function() {
+    if ( myShowDataPoints) {
+       document.getElementById('my32x32CanvasA').style.display = 'none'  
+      // document.getElementById('myFaceCanvas').style.display = 'none'  
+      // document.getElementById('myVideoAsCanvas').style.display = 'none'  
+      // document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
+    } else {
+      document.getElementById('my32x32CanvasA').style.display = 'inline'   
+     // document.getElementById('myFaceCanvas').style.display = 'inline'   
+     // document.getElementById('myVideoAsCanvas').style.display = 'inline'   
+     // document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
+    }
+}                                                                                           
+                                                                                           
+                                                                                           
  myChangeCheckBox = async function() {                                                                                          
      if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
-    console.log(myShowDataPoints)                                                                                             
+    console.log(myShowDataPoints)  
+    myShowHide()                                                                                       
 }                                                                                           
                                                                                              
                                                                                              
