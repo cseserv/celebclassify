@@ -25,7 +25,7 @@
 <input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }"> <br><br>
 
  
-<input type="hidden" id="myInFile" size="120" value="www/models/myClassifierModel01.json"> <br>
+<input type="hidden" id="myInFile" size="120" value="myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
@@ -324,10 +324,10 @@ myRunFace = async function() {
    console.log('knn-classigfier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('www/models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('www/models')
+   await faceapi.loadTinyYolov2Model('')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
