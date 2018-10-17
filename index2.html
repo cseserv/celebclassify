@@ -321,7 +321,7 @@ myLoadManyImages = async function() {
 myRunFace = async function() {
                                                                                         
    classifier = knnClassifier.create();                                     
-   console.log('knn-classigfier loaded')
+   console.log('knn-classifier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
    await net.load('face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
