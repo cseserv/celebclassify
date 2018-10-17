@@ -192,7 +192,7 @@ let myIncomingClassifier = []
 let myIncomingImages = []  
 let myMatchArray = []     
 let myMatchCount = -1 
-let myShowDataPoints = true
+let myShowDataPoints = false
 
                                                                                            
                                                                                            
@@ -361,7 +361,7 @@ myRunFace = async function() {
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
                                                                                            
-   myShowHide()                                                                                       
+       myShowHide()                                                                                   
 }
 
 
