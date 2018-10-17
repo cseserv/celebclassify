@@ -768,7 +768,10 @@ myStopAuto  = async function(){
  <script>
                                                                                               
     (async function() {                                                                
-          alert()
+        await myRunFace() 
+        await myClassifierLoad()
+        await getVideo()
+        await takeAuto()
    }  )()   
 </script>
  
