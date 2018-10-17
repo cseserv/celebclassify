@@ -455,9 +455,11 @@ myPredict = async function(){
                                                                                            
                                                                                          
   //  document.getElementById('myDivTest').innerHTML =  '<div color=red onclick={myLoadOneImage('+result.classIndex+')}>...'+myGroups[result.classIndex]+ '...</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                                           
+                                                                                                                
+   // document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>This match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
+                                                                                                                 
     document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>'+myMatchCount+': '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                                           
+                                                                       
                                                                                            
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
