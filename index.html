@@ -67,9 +67,7 @@ var app = {
           });
         }
      document.getElementById('myDiv01').innerHTML += ' Camera activated<br>' 
-        
-     myTest() 
-     document.getElementById('myDiv01').innerHTML += 'myTest Done<br>'
+       
         
      myRunFace() 
      document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
@@ -103,6 +101,8 @@ var app = {
                 console.log('[CanvasCamera stop]', 'data', data);
             });
         }
+        
+        myStopAuto()  // stop auto generate
     }
 };
 
@@ -510,7 +510,7 @@ myLoadManyImages = async function() {
 myRunFace = async function() {
                                                                                         
    classifier = knnClassifier.create();                                     
-   console.log('knn-classigfier loaded')
+   console.log('knn-classifier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
    await net.load('models/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
