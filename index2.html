@@ -434,8 +434,9 @@ myPredict = async function(){
     myMatchCount += 1
     myMatchArray[myMatchCount] = result.classIndex 
     for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
-      console.log(myMatchArray[myIt] + ', ' +myMatchArray[myMatchCount])                                                                                              
-      if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before                                                                              
+      console.log(myMatchArray[myIt])                                                                                              
+      if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
+         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])   
          myStopAuto()                                                                                     
       }  
     }                                                                                       
