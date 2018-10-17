@@ -219,9 +219,18 @@ myCheckGroups   = async function() {
  }                                                                                            
                                                                                              
 
+myShowHide = async function() {
+    if ( myShowDataPoints) {
+       document.getElementById('my32x32CanvasA').style.display = 'none'                                                                                    
+    } else {
+      document.getElementById('my32x32CanvasA').style.display = 'inline'                                                                                        
+    }
+}                                                                                           
+                                                                                           
  myChangeCheckBox = async function() {                                                                                          
-     if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
-    console.log(myShowDataPoints)                                                                                             
+   if ( myShowDataPoints)  { myShowDataPoints = false } else { myShowDataPoints = true } 
+   console.log(myShowDataPoints) 
+   myShowHide()                                                                                        
 }                                                                                           
                                                                                              
                                                                                              
@@ -332,6 +341,7 @@ myLoadManyImages = async function() {
 }
                                                                                              
 
+                                                                                           
 myRunFace = async function() {
                                                                                         
    classifier = knnClassifier.create();                                     
@@ -343,7 +353,8 @@ myRunFace = async function() {
                                                                                              
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
-                                                                                          
+   myShowHide()                                                                                    
+                                                                                           
 }
 
 
