@@ -444,10 +444,9 @@ myPredict = async function(){
                                                                                            
                                                                                            
                                                                                            
-    document.getElementById('myDivTest').innerHTML =  `<div color=red onclick={
-                                                                                           
-      alert('cool')                                                                                     
-   }>`+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
+    document.getElementById('myDivTest').innerHTML =  `<div color=red onclick='{                                                                                     
+     console.log(\'nice\')                                                                                     
+   }'>`+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
