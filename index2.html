@@ -28,7 +28,7 @@
 <input type="hidden" id="myInFile" size="120" value="./myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
- ...
+ 
  
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
@@ -42,9 +42,9 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
 <video id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
 <canvas id="my32x32CanvasA" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
 
-<canvas id="myFaceCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
-<canvas id="myVideoAsCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="display:inline; position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
+<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
+<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
+<canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
 
 <!-- <div id="myDivLoss">...</div><br> -->
  
@@ -219,24 +219,9 @@ myCheckGroups   = async function() {
  }                                                                                            
                                                                                              
 
-myShowHide = async function() {
-    if ( myShowDataPoints) {
-       document.getElementById('my32x32CanvasA').style.display = 'none'  
-      // document.getElementById('myFaceCanvas').style.display = 'none'  
-      // document.getElementById('myVideoAsCanvas').style.display = 'none'  
-      // document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                    
-    } else {
-      document.getElementById('my32x32CanvasA').style.display = 'inline'   
-     // document.getElementById('myFaceCanvas').style.display = 'inline'   
-     // document.getElementById('myVideoAsCanvas').style.display = 'inline'   
-     // document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                        
-    }
-}                                                                                           
-                                                                                           
  myChangeCheckBox = async function() {                                                                                          
-   if ( myShowDataPoints)  { myShowDataPoints = false } else { myShowDataPoints = true } 
-   console.log(myShowDataPoints) 
-   myShowHide()                                                                                        
+     if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
+    console.log(myShowDataPoints)                                                                                             
 }                                                                                           
                                                                                              
                                                                                              
@@ -347,7 +332,6 @@ myLoadManyImages = async function() {
 }
                                                                                              
 
-                                                                                           
 myRunFace = async function() {
                                                                                         
    classifier = knnClassifier.create();                                     
@@ -359,8 +343,7 @@ myRunFace = async function() {
                                                                                              
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
-   myShowHide()                                                                                    
-                                                                                           
+                                                                                          
 }
 
 
@@ -466,8 +449,7 @@ myPredict = async function(){
       console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
          console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])   
-         myStopAuto()    
-         document.getElementById('myDivTest').innerHTML = 'Stopping App: Matches Duplicated <br><br>' +document.getElementById('myDivTest').innerHTML =                                                                                  
+         myStopAuto()                                                                                     
       }  
     }                                                                                       
     myLoadOneImage(result.classIndex)                                                                                         
@@ -766,4 +748,4 @@ myStopAuto  = async function(){
  
  
  
-<div id='myDiv123'>...</div><br>
+<div id='my
