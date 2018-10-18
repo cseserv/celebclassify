@@ -35,7 +35,8 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
 <input type="button" value="Stop" onclick="{myStopAuto()}">
 <input type=checkbox id="myCheck01" onclick="{                                            
     myChangeCheckBox()                                                                               
-}">Show zoomed 68 data points<br><br>
+}">Show zoomed 68 data points, <input type=checkbox id="myContinuous" onclick="{                                                                                                                          
+}">Continuous<br><br>
 
 
  
@@ -480,6 +481,8 @@ myPredict = async function(){
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
     myMatchCount += 1
     myMatchArray[myMatchCount] = result.classIndex 
+    if (document.getElementById('myContinuous').value == 'on'){                                                                                       
+                                                                                           
     for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
       console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
@@ -487,6 +490,8 @@ myPredict = async function(){
          document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
          myStopAuto()                                                                                     
       }  
+    }     
+                                                                                           
     }                                                                                       
     myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
