@@ -482,7 +482,7 @@ myPredict = async function(){
     myMatchCount += 1
     myMatchArray[myMatchCount] = result.classIndex 
     console.log(document.getElementById('myContinuous').value)
-    if (document.getElementById('myContinuous').value == 'on'){                                                                                       
+    if (document.getElementById('myContinuous').value != 'on'){                                                                                       
                                                                                            
     for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
       console.log(myMatchArray[myIt])                                                                                              
