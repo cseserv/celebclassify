@@ -32,12 +32,13 @@
     <!-- needed for camera? -->  
 
 
-    <access origin="*" />
+    <access origin="*" />    
+    <allow-intent href="https://hpssjellis.github.io/celebclassify/*" />
 
-    <preference name="AndroidPersistentFileLocation" value="Internal" />
+  <!--  <preference name="AndroidPersistentFileLocation" value="Internal" />  -->
  <!--   <preference name="permissions" value="none" />   -->
     <plugin name="cordova-plugin-whitelist" spec="~1" /> 
-    <plugin name="cordova-plugin-file" spec="~6" source="npm" />
+ <!--   <plugin name="cordova-plugin-file" spec="~6" source="npm" />  -->
     
   <!--    <plugin name="cordova-plugin-camera" source="npm" version="4.0.3" />-->
     
