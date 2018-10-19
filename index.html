@@ -6,7 +6,6 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-         //appView.getSettings().setAllowUniversalAccessFromFileURLs(true);    /// I added
     },
     // Bind Event Listeners
     //
@@ -69,7 +68,7 @@ var app = {
         }
      document.getElementById('myDiv01').innerHTML += ' Camera activated<br>' 
        
-    // myTryLoadMyClassJson()   
+        
      myRunFace() 
      document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
         
@@ -123,18 +122,9 @@ app.initialize();
               * Enable inline JS: add 'unsafe-inline' to default-src
 
       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' data: content:;">
-       
+      -->     
 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
   
- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">     
-      
-<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *; script-src *"/>  
- 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self'  'unsafe-inline'; media-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
-
--->       
-       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src 'self' 'unsafe-inline' 'unsafe-eval';">     
-
       
       <meta name="format-detection" content="telephone=no">
       <meta name="msapplication-tap-highlight" content="no">
@@ -194,7 +184,7 @@ app.initialize();
 
 
  
-<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
+<input type="hidden" id="myInFile" size="120" value="myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
@@ -517,43 +507,16 @@ myLoadManyImages = async function() {
 }
                                                                                              
 
-                                                                                           
- function loadJSON(callback) {   
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'myClassifierModel01.json', true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-          }
-    };
-    xobj.send(null);  
- }
-    
-myTryLoadMyClassJson = async function () {
- loadJSON(function(response) {
-  // Parse JSON string into object
-    var actual_JSON = JSON.parse(response);
-    console.log(actual_JSON)
- });
-}                                                                                            
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                          
-                                                                                           
 myRunFace = async function() {
                                                                                         
    classifier = knnClassifier.create();                                     
    console.log('knn-classifier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
-   console.log('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model loaded')
+   await net.load('face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/celebclassify/')
+   await faceapi.loadTinyYolov2Model('')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
