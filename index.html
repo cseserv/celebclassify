@@ -184,7 +184,7 @@ app.initialize();
 
 
  
-<input type="hidden" id="myInFile" size="120" value="myClassifierModel01.json"> <br>
+<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
@@ -513,10 +513,10 @@ myRunFace = async function() {
    console.log('knn-classifier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('')
+   await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/celebclassify/')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
