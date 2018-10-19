@@ -122,19 +122,9 @@ app.initialize();
               * Enable inline JS: add 'unsafe-inline' to default-src
 
       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' data: content:;">
-       
+      -->     
 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
   
- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">     
-      
-<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *; script-src *"/>  
- 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self'  'unsafe-inline'; media-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
-
-     
-       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src 'self' 'unsafe-inline' 'unsafe-eval';">     
--->   
-      <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: content:;">  
       
       <meta name="format-detection" content="telephone=no">
       <meta name="msapplication-tap-highlight" content="no">
@@ -173,7 +163,8 @@ app.initialize();
     
     
     
- <!-- Load Tensorflowjs from here -->
+    
+<!-- Load Tensorflowjs from here -->
 <script src="tfjs13-1.js"> </script> 
 
 <!-- Load face-api from here -->
@@ -181,52 +172,67 @@ app.initialize();
 
 <!-- Load KNN Classifier from here -->
 <script src="knn-classifier0-2-2.js"></script> 
+
+
     
-<h3 align=center>Party App: Celebrity Female Face Match</h3>
 
-<table border=0 width="100%"><tr ><td align="center"><input type="button" value=" Start " style="font-size:50px; background-color:lime;  " onclick="{
+
+<input type="button" value="Load Face-api.js face_landmark_68_tiny_model" style="background-color:lime" onclick="{
    myRunFace() 
-    }">
-</td></tr></table><br>
+}"><br><br>
 
-
-<select size="1" id="myCheck">
- <option value="user">Front Mobile Camera</option>
- <option value="environment">Rear Mobile Camera</option>
-</select>
-
-<input type="button" id="myButtonActivateWebCam" value="Activate WebCam" onclick="{getVideo()}"> 
-<input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }"> <br>
-
- 
-<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json">
-
-<input type="hidden" value="Load Classifier" onclick="{myClassifierLoad()}"> 
- 
- 
-Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
-<input type="button" id="myButtonAuto" value="Restart" onclick="{takeAuto()}"> 
-<input type="button" value="Stop" onclick="{myStopAuto()}">
-<input type=checkbox id="myCheck01" onclick="{                                            
-    myChangeCheckBox()                                                                               
-}">Show zoomed 68 data points, <input type=checkbox id="myContinuous" onclick="{                                                                                                                          
-}">Continuous<br><br>
 
 
  
-<video id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
+<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
+
+<input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
+ 
+ 
+Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds......<br>
+<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
+<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
+    <div id="myDiv01">...</div>
+
+
+ 
+
+
+
+
+
+
+
+
+<canvas id="my32x32CanvasA" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
+
+
+
+
+<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
+
+
+
+
+<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
+
+
+
+
+<canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
+
+
+
+
+<!-- <div id="myDivLoss">...</div><br> -->
+ 
+
 <canvas id="myInCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
 <div id="myDivTest" style="width:300px;  height:400px;">...</div><br>
 
 
-<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
-<canvas id="my32x32CanvasA" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas>
-<br>
-<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas>
 
-<!-- <div id="myDivLoss">...</div><br> -->
- 
+
 
 
  
@@ -366,21 +372,10 @@ let newArray = []
 let newArray2 = []  
 let myFaceToClose = 0    // pixels to make bounding box bigger
 let myIncomingClassifier = []    
-let myIncomingImages = []  
-let myMatchArray = []     
-let myMatchCount = -1 
-let myShowDataPoints = false
+let myIncomingImages = []                                                                                             
 
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
  ///////////////////////////////////// Canvas and video elements ////////////////////////////////                                                                                                   
-
-                                                                                           
-                                                                                           
-                                                                                           
+                                                                                             
                                                                                              
 
 //////////////////////////////////////// knn classifier stuff///////////////////////////
@@ -398,29 +393,12 @@ myCheckGroups   = async function() {
    } 
  }                                                                                            
                                                                                              
-
-                                                                                           
-myShowHide = async function() {
-    if ( myShowDataPoints) {
-       document.getElementById('my32x32CanvasA').style.display = 'inline'  
-       document.getElementById('myFaceCanvas').style.display = 'inline'  
-       document.getElementById('myVideoAsCanvas').style.display = 'inline'  
-       document.getElementById('myBorderAsCanvas').style.display = 'inline'                                                                                    
-    } else {
-      document.getElementById('my32x32CanvasA').style.display = 'none'   
-      document.getElementById('myFaceCanvas').style.display = 'none'   
-      document.getElementById('myVideoAsCanvas').style.display = 'none'   
-      document.getElementById('myBorderAsCanvas').style.display = 'none'                                                                                       
-    }
-}                                                                                           
-                                                                                           
-                                                                                           
- myChangeCheckBox = async function() {                                                                                          
-     if ( myShowDataPoints)  {myShowDataPoints = false} else {myShowDataPoints = true} 
-    console.log(myShowDataPoints)  
-    myShowHide()                                                                                       
-}                                                                                           
                                                                                              
+                                                                                             
+                                                                                             
+myTest = async function() { 
+  document.getElementById('myDiv01').innerHTML += 'The test is running' 
+}    
                                                                                              
 myLoadManyImages = async function() {
   
@@ -504,7 +482,7 @@ myLoadManyImages = async function() {
      }                                                                                          
                                                                                                     
     // myCTX3.drawImage(can, 0, 0, myCanvasElement3.width, myCanvasElement3.height);                                                                                                                                                                                            
-     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
+     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 2);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
                                                                                          
@@ -530,7 +508,7 @@ myLoadManyImages = async function() {
                                                                                              
 
 myRunFace = async function() {
-   document.getElementById('myDivTest').innerHTML = ''     // clear it just on startup                                                                                 
+                                                                                        
    classifier = knnClassifier.create();                                     
    console.log('knn-classifier loaded')
                                                                                              
@@ -540,19 +518,7 @@ myRunFace = async function() {
                                                                                              
    await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/celebclassify/')
    console.log('loadTinyYolov2Model loaded')
-                                                                                           
-   myShowHide()  
-   console.log('Hiding Data Images')   
-
-   await myClassifierLoad()
-   console.log('Classifier Loaded')  
-   await getVideo()
-   console.log('Webcam active')  
-   await takeAuto() 
-   console.log('Interrval Active')                                                                                           
-                                                                                           
-                                                                                           
-                                                                                           
+                                                                                          
 }
 
 
@@ -612,8 +578,22 @@ myPredict = async function(){
   let forwardTimes = []
                                                                                              
   let myCanvasElement = document.getElementById('my32x32CanvasA');
-  let myCTX = myCanvasElement.getContext('2d');                                                                                             
-  myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+  let myCTX = myCanvasElement.getContext('2d');      
+ 
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                              
+                                                                                           
+                                                                                           
+                         
+  let myCanvasGap = document.getElementById('fullsize');
+ // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+  //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
+                                                                                           
+                                                                                           
+    
+  myCTX.drawImage(myCanvasGap, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+ // myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height); 
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                              
+                                                                                        
                                                                                             
   if (classifier.getNumClasses() >= 1){    // have groups to rate
                                             
@@ -632,7 +612,24 @@ myPredict = async function(){
                                                                                              
      let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
      let myCTX4 = myCanvasElement4.getContext('2d');
-     myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+                                                                                           
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                        
+                                                                                           
+                                                                                           
+                                
+  let myCanvasGap = document.getElementById('fullsize');
+ // let myCtxGap = myCanvasGap.getContext('2d');                                                                                               
+  //   const img1 = tf.fromPixels(myCanvasGap);                                                                                             
+                                                                                           
+                                                                                           
+    
+myCTX4.drawImage(myCanvasGap, 0, 0, myCanvasElement4.width, myCanvasElement4.height);                                                                                     
+                                                                                           
+                                                                                           
+  
+   //  myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+   //////////////////////////////////////// for phonegap //////////////////////////////////////////     
+                                                                                           
                                       
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
@@ -649,24 +646,11 @@ myPredict = async function(){
      }                                                                                          
                                                                                                     
      myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);                                                                                                                                                                                            
-     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
+     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 2);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
-    myMatchCount += 1
-    myMatchArray[myMatchCount] = result.classIndex 
-    console.log(document.getElementById('myContinuous').value)
-    if (document.getElementById('myContinuous').checked == false){                                                                                       
-                                                                                           
-    for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
-      console.log(myMatchArray[myIt])                                                                                              
-      if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
-         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
-         document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
-         myStopAuto()                                                                                     
-      }  
-    }     
-                                                                                           
-    }                                                                                       
+   
+                                                                                             
     myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
                                                                                              
@@ -674,17 +658,9 @@ myPredict = async function(){
   //     Math.round(result.confidences[result.classIndex]*100)+ '% ' + myGroups[result.classIndex]+ '<br>'  + 
   //     document.getElementById('myDivTest').innerHTML
                                                                                            
-                     
-  //  document.getElementById('myDivTest').innerHTML = Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
-   //   myGroups[result.classIndex]+ '<br>' + document.getElementById('myDivTest').innerHTML   
-                                                                                           
-                                                                                         
-  //  document.getElementById('myDivTest').innerHTML =  '<div color=red onclick={myLoadOneImage('+result.classIndex+')}>...'+myGroups[result.classIndex]+ '...</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                                                                
-   // document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>This match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                                                                 
-    document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>Nearest Match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                       
+                  
+    document.getElementById('myDivTest').innerHTML = Math.round(result.confidences[result.classIndex]*100)+ '% ' + 
+      myGroups[result.classIndex]+ '<br>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                            
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
@@ -767,7 +743,7 @@ myLoadOneImage  = async function(myGroupNumber){
  
    console.log('Define Model')                                                                                                                                                                                       
    const myClassifierModel = tf.model({inputs: myLayerList[1], outputs: myConcatenate1Dense4});    // This would be a global model. With list of inputs as an array                                                                                                                                                                                         
-   //myClassifierModel.summary()    // show a summary of the load
+   myClassifierModel.summary()
    console.log('myClassifierModel.layers[myMaxClasses]')     
    console.log(myClassifierModel.layers[myMaxClasses])
    myPassedClassifier.getClassifierDataset()[0].print(true)                                                                                            
@@ -871,7 +847,7 @@ myClassifierLoad  = async function(){
 var myVideoStream = document.getElementById('myVideoElement')     // make it a global variable
 var myStoredInterval = 0
 
-                                                                                             
+  /*                                                                                           
                                                                                              
 stopVideo = async function() {  
   clearInterval(myStoredInterval)   // god idea to stop the auto snapshot taking                                                                                         
@@ -901,15 +877,10 @@ getVideo = async function() {
                                                                                              
                                                                                              
 
-
+  */ 
                                                                                              
-takeAuto = async function(){  
-     document.getElementById('myDivTest').innerHTML = '<br><br>'+ document.getElementById('myDivTest').innerHTML                                                                                       
-     document.body.style.backgroundColor = 'white'                                                                                     
-     myMatchCount = -1    // reset match array
-     myMatchArray.length = 0                                                 
-    console.log(myMatchArray)                                                                                       
-                                                                                           
+takeAuto = async function(){   
+    document.getElementById('myDivTest').innerHTML = ''                                                                                       
     myStoredInterval = setInterval(async function(){                                                                                         
        await myPredict()                                                                                   
    }, document.getElementById('myInterval').value);        
@@ -918,14 +889,11 @@ takeAuto = async function(){
    
                                                                                              
                                                                                              
-myStopAuto  = async function(){ 
-     myMatchCount = -1    // reset match array
-     myMatchArray.length = 0                                                                                         
-    clearInterval(myStoredInterval)  
-    document.body.style.backgroundColor = 'lightblue'                                                                                       
+myStopAuto  = async function(){                                                                                             
+    clearInterval(myStoredInterval)    
 }                                                                                            
   
-                                                                                             
+                                                                                          
                                                                                              
                                                                                              
  ///////////////////////////////////////////// Done Webcam functions ////////////////////////////////////////                                                                                               
@@ -948,21 +916,19 @@ myStopAuto  = async function(){
                                                                                              
                                                                                              
 /////////////////////////////////// END ALL FUNCTIONS ///////////////////////////////////////                                                                                             
-
-//auto run these commands Think of this as the main funciton                                                                                          
-                                                                                           
-                                                                               
-                                                                                           
+                                                                                             
                                                                                              
                                                                                              
 //////////////////////////////////   WEIRD STYLE TAG THAT IS ACTUALLY A DYNAMIC SCRIPT TAG ///////////////////                                                                                          
                                                                                              
                                                                                              
+
 }"></style>
 <!-- If you replaced the <style> tag with a <script> tag don't forget to change the above line to just </script>  -->
  
  
-
+ 
+ 
  
  
  
@@ -975,6 +941,9 @@ myStopAuto  = async function(){
  
  
 <div id='myDiv123'>...</div><br>
+    
+    
+    
     
     
     
