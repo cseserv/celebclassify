@@ -69,15 +69,15 @@ var app = {
         }
      document.getElementById('myDiv01').innerHTML += ' Camera activated<br>' 
        
-     myTryLoadMyClassJson()   
-     //myRunFace() 
-     //document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
+    // myTryLoadMyClassJson()   
+     myRunFace() 
+     document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
         
-     //myClassifierLoad()
-     //document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
+     myClassifierLoad()
+     document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
         
      takeAuto()        
-     //document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'  
+     document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'  
         
     },
     flash: false,
@@ -194,7 +194,7 @@ app.initialize();
 
 
  
-<input type="hidden" id="myInFile" size="120" value="./myClassifierModel01.json"> <br>
+<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
 
 <input type="button" value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
  
@@ -550,10 +550,10 @@ myRunFace = async function() {
    console.log('knn-classifier loaded')
                                                                                              
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('./face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
-   console.log('face_landmark_68_tiny_model loaded')
+   await net.load('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   console.log('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('./')
+   await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/celebclassify/')
    console.log('loadTinyYolov2Model loaded')
                                                                                           
 }
