@@ -181,8 +181,8 @@ app.initialize();
 
   
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds......<br>
-<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
-<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
+<input type="button" id="myButtonAuto" value="Reset" onclick="{takeAuto()}"> 
+<input type="button" value="Stop" onclick="{myStopAuto()}"><br><br>
 
    
     
@@ -901,14 +901,14 @@ getVideo = async function() {
                                                                                              
                                                                                              
 
-
                                                                                              
-takeAuto = async function(){   
+takeAuto = async function(){  
+     document.getElementById('myDivTest').innerHTML = '<br><br>'+ document.getElementById('myDivTest').innerHTML                                                                                       
      document.body.style.backgroundColor = 'white'                                                                                     
      myMatchCount = -1    // reset match array
      myMatchArray.length = 0                                                 
     console.log(myMatchArray)                                                                                       
-    document.getElementById('myDivTest').innerHTML = ''                                                                                       
+                                                                                           
     myStoredInterval = setInterval(async function(){                                                                                         
        await myPredict()                                                                                   
    }, document.getElementById('myInterval').value);        
