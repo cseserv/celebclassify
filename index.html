@@ -70,13 +70,7 @@ var app = {
        
         
      myRunFace() 
-     document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
-        
-     myClassifierLoad()
-     document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
-        
-     takeAuto()        
-     document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'  
+
         
     },
     flash: false,
@@ -521,14 +515,15 @@ myRunFace = async function() {
    console.log('loadTinyYolov2Model loaded')
                                                                                              
    myShowHide()  
-   console.log('Hiding Data Images')   
-
-   await myClassifierLoad()
-   console.log('Classifier Loaded')  
-   await getVideo()
-   console.log('Webcam active')  
-   await takeAuto() 
-   console.log('Interrval Active')                                                                                            
+  // console.log('Hiding Data Images')   
+                                                                                           
+   document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
+        
+   myClassifierLoad()
+   document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
+        
+   takeAuto()        
+   document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'                                                                                           
 }
 
 
