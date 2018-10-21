@@ -590,7 +590,7 @@ myPredict = async function(){
                                                                                            
                                                                                            
     
-  myCTX.drawImage(myCanvasGap, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+  myCTX.drawImage(myCanvasGap, 0, 0, myCanvasGap.width, myCanvasGap.height);  
 //  myCTX.drawImage(myCanvasGap, 0, 0, myCanvasElement.width, myCanvasElement.height);  
  // myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height); 
    //////////////////////////////////////// for phonegap //////////////////////////////////////////                                                                                              
@@ -646,7 +646,8 @@ myCTX4.drawImage(myCanvasGap2, 0, 0, myCanvasElement4.width, myCanvasElement4.he
        newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
      }                                                                                          
                                                                                                     
-     myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);                                                                                                                                                                                            
+     myCTX.drawImage(myCanvasGap2, 0, 0, myCanvasGap2.width, myCanvasGap2.height);            
+   //  myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);                                                                                                                                                                                           
      const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 2);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
