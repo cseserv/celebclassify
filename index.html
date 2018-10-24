@@ -293,8 +293,10 @@ myShowHide = async function() {
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
-  
+   cosole.log('Need to open textarea')
    const myIn = document.getElementById('myArray01').value.split('***')
+  
+   cosole.log('Opened the textarea')                                                                                         
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
@@ -437,7 +439,7 @@ myLoadLinks   = async function(){
 
    let myIncomingText = await fetch(document.getElementById('myInText').value)   
    console.log(myIncomingText.text())                                                                                      
-   document.getElementById('myArea01').value = await myIncomingText.text()                                                                                    
+   document.getElementById('myArray01').value = await myIncomingText.text()                                                                                    
                                                                                      
                                                                                            
 }                                                                                           
