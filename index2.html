@@ -26,6 +26,7 @@
 
  
 <input type="hidden" id="myInFile" size="120" value="./myClassifierModel01.json">
+<input type="hidden" id="myInText" size="120" value="./myClassifierLinks.txt"> <br>
 
 <input type="hidden" value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
@@ -42,7 +43,7 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
  
 <video id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
 <canvas id="myInCanvas" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="myInCavas: Shows the latest fit"></canvas><br>
-<div id="myDivTest" style="width:300px;  height:400px;">...</div><br>
+<div id="myDivTest" style="width:300px; overflow:scroll;  height:400px;">...</div><br>
 
 
 <canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
@@ -355,32 +356,51 @@ myLoadManyImages = async function() {
                                                                                              
 }
                                                                                              
-
 myRunFace = async function() {
-   document.getElementById('myDivTest').innerHTML = ''     // clear it just on startup                                                                                 
+   document.getElementById('myDivTest').innerHTML =  ''  // clear the output area  
+   document.getElementById('myDiv01').innerHTML = ''     // clear the message area                                                                                      
+  // document.getElementById('myContinuous').checked = false    // force to stop at a match                                                                                     
+   
+   myLoadLinks()                                                                                         
+   console.log('Classfier Links loaded')                                                                                       
+   document.getElementById('myDiv01').innerHTML +=  'Classfier Links loaded'    
+                                                                                           
    classifier = knnClassifier.create();                                     
-   console.log('knn-classifier loaded')
-                                                                                             
+   console.log('knn-classifier loaded')                                                 
+   document.getElementById('myDiv01').innerHTML +=  'knn-classifier loaded'    
+                                                                                           
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
    await net.load('./face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
-                                                                                           
+                                                                                             
    myShowHide()  
-   console.log('Hiding Data Images')   
-
-   await myClassifierLoad()
-   console.log('Classifier Loaded')  
-   await getVideo()
-   console.log('Webcam active')  
-   await takeAuto() 
-   console.log('Interrval Active')                                                                                           
+  // console.log('Hiding Data Images')   
                                                                                            
-                                                                                           
-                                                                                           
+   document.getElementById('myDiv01').innerHTML += 'myRunFace Done<br>'
+        
+   myClassifierLoad()
+   document.getElementById('myDiv01').innerHTML += 'my classifier loaded<br>'
+        
+   takeAuto()        
+   document.getElementById('myDiv01').innerHTML += 'myAuto active<br>'                                                                                           
 }
+
+
+myLoadLinks   = async function(){                                                                                          
+ // fetch all the information for the hidden textarea myArray01  
+   //document.getElementById('myArea01').value =   'wow'
+
+   const response = await fetch(document.getElementById('myInText').value)   
+   const myIncoming =  await response.text()                                                                                       
+  // console.log(myIncoming)                                                                                      
+   document.getElementById('myArray01').value = myIncoming                                                                                
+                                                                                     
+                                                                                           
+}                                                                                           
+               
 
 
 myTextChange = async function(){     
