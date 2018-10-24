@@ -431,12 +431,11 @@ myRunFace = async function() {
 
 myLoadLinks   = async function(){                                                                                          
  // fetch all the information for the hidden textarea myArray01  
-
    //document.getElementById('myArea01').value =   'wow'
-   document.getElementById('myArea01').value = await fetch(document.getElementById('myInText').value)                                                                                      
-                                                                                           
-                                                                                           
-  document.getElementById('myArray01').value  = 'wow'                                                                                        
+
+   let myIncomingText = await fetch(document.getElementById('myInText').value)                                                                                      
+   document.getElementById('myArea01').value = await myIncomingText.text()                                                                                    
+                                                                                     
                                                                                            
 }                                                                                           
                                                                                            
