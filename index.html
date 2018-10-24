@@ -438,8 +438,9 @@ myLoadLinks   = async function(){
    //document.getElementById('myArea01').value =   'wow'
 
    const response = await fetch(document.getElementById('myInText').value)   
-   console.log(await response.text())                                                                                      
-   document.getElementById('myArray01').value = await response.text()                                                                                 
+   const myIncoming =  await response.text()                                                                                       
+   console.log(myIncoming)                                                                                      
+   document.getElementById('myArray01').value = myIncoming                                                                                
                                                                                      
                                                                                            
 }                                                                                           
