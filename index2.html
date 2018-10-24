@@ -255,11 +255,11 @@ myRunFace = async function() {
    
    myLoadLinks()                                                                                         
    console.log('Classfier Links loaded')                                                                                       
-   document.getElementById('myDiv01').innerHTML +=  'Classfier Links loaded'    
+   document.getElementById('myDiv01').innerHTML +=  'Classfier Links loaded<br>'    
                                                                                            
    classifier = knnClassifier.create();                                     
    console.log('knn-classifier loaded')                                                 
-   document.getElementById('myDiv01').innerHTML +=  'knn-classifier loaded'    
+   document.getElementById('myDiv01').innerHTML +=  'knn-classifier loaded<br>'    
                                                                                            
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
    await net.load('./face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
@@ -267,7 +267,13 @@ myRunFace = async function() {
                                                                                              
    await faceapi.loadTinyYolov2Model('./')
    console.log('loadTinyYolov2Model loaded')
-                                                                                             
+    
+   //web page only
+   getVideo()                                                                                                                                                                                 
+   console.log('Video active')  
+                   
+   document.getElementById('myDiv01').innerHTML += 'video Done<br>'
+                                                                                           
    myShowHide()  
   // console.log('Hiding Data Images')   
                                                                                            
