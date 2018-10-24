@@ -180,6 +180,7 @@ app.initialize();
 
  
 <input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
+<input type="hidden" id="myInText" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierLinks.txt"> <br>
 
   
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds......<br>
@@ -513,7 +514,11 @@ myLoadManyImages = async function() {
 }                                                                            
 
 myRunFace = async function() {
-                                                                                        
+   document.getElementById('myDivTest').innerHTML =  ''  // clear the output area   
+   
+   myLoadLinks()                                                                                         
+   console.log('Classfier Links loaded')                                                                                       
+                                                                                           
    classifier = knnClassifier.create();                                     
    console.log('knn-classifier loaded')
                                                                                              
@@ -537,6 +542,11 @@ myRunFace = async function() {
 }
 
 
+myLoadLinks   = async function(){                                                                                          
+ // fetch all the information for the hidden textarea myArray01                                                                                         
+                                                                                           
+}                                                                                           
+                                                                                           
 myTextChange = async function(){     
     if (parseInt(document.getElementById('myClassNumber').value) < 0 ){
            document.getElementById('myClassNumber').value = 0                                                                                  
@@ -915,7 +925,7 @@ takeAuto = async function(){
    }, document.getElementById('myInterval').value);        
 }
   
-   
+ 
                                                                                              
                                                                                              
 myStopAuto  = async function(){ 
