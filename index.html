@@ -435,7 +435,8 @@ myLoadLinks   = async function(){
  // fetch all the information for the hidden textarea myArray01  
    //document.getElementById('myArea01').value =   'wow'
 
-   let myIncomingText = await fetch(document.getElementById('myInText').value)                                                                                      
+   let myIncomingText = await fetch(document.getElementById('myInText').value)   
+   console.log(myIncomingText.text()                                                                                       
    document.getElementById('myArea01').value = await myIncomingText.text()                                                                                    
                                                                                      
                                                                                            
