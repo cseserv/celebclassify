@@ -514,7 +514,8 @@ myLoadManyImages = async function() {
 }                                                                            
 
 myRunFace = async function() {
-   document.getElementById('myDivTest').innerHTML =  ''  // clear the output area   
+   document.getElementById('myDivTest').innerHTML =  ''  // clear the output area  
+   document.getElementById('myContinuous').checked = false    // force to stop at a match                                                                                     
    
    myLoadLinks()                                                                                         
    console.log('Classfier Links loaded')                                                                                       
@@ -665,19 +666,19 @@ myPredict = async function(){
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
     myMatchCount += 1
     myMatchArray[myMatchCount] = result.classIndex 
-    console.log(document.getElementById('myContinuous').value)
+   // console.log(document.getElementById('myContinuous').value)
     if (document.getElementById('myContinuous').checked == false){                                                                                       
                                                                                            
     for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
-      console.log(myMatchArray[myIt])                                                                                              
+     // console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
-         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
+        // console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
          document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
          myStopAuto()                                                                                     
       }  
-    }     
+    }  // end for     
                                                                                            
-    }                                                                                       
+    } //  end if continuous not checked                                                                                    
     myLoadOneImage(result.classIndex)                                                                                         
                                                                                              
                                                                                              
