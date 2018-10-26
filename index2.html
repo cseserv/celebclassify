@@ -1,12 +1,12 @@
 
 <!-- Load Tensorflowjs from here -->
-<script src="tfjs13-1.js"> </script> 
+<script src="https://www.rocksetta.com/party-app/tfjs13-1.js"> </script> 
 
 <!-- Load face-api from here -->
-<script src="face-api.min.js"></script>
+<script src="https://www.rocksetta.com/party-app/face-api.min.js"></script>
 
 <!-- Load KNN Classifier from here -->
-<script src="knn-classifier0-2-2.js"></script> 
+<script src="https://www.rocksetta.com/party-app/knn-classifier0-2-2.js"></script> 
     
 <h3 align=center>Party App: Celebrity Female Face Match</h3>
 
@@ -25,8 +25,8 @@
 <input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }"> <br>
 
  
-<input type="hidden" id="myInFile" size="120" value="./myClassifierModel01.json">
-<input type="hidden" id="myInText" size="120" value="./myClassifierLinks.txt"> <br>
+<input type="hidden" id="myInFile" size="120" value="https://www.rocksetta.com/party-app/myClassifierModel01.json">
+<input type="hidden" id="myInText" size="120" value="https://www.rocksetta.com/party-app/myClassifierLinks.txt"> <br>
 
 <input type="hidden" value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
@@ -262,10 +262,10 @@ myRunFace = async function() {
    document.getElementById('myDiv01').innerHTML +=  'knn-classifier loaded<br>'    
                                                                                            
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('./face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('https://www.rocksetta.com/party-app/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('./')
+   await faceapi.loadTinyYolov2Model('https://www.rocksetta.com/party-app/')
    console.log('loadTinyYolov2Model loaded')
     
    //web page only
