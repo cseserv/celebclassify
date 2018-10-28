@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0"
-    id          = "com.rocksetta.knn-celebrity"
-    versionCode = "10"
-    version     = "1.04.01" >      <!-- Change this before each compile -->
+    id          = "com.rocksetta.knn_celebrity"
+    versionCode = "11"
+    version     = "1.06.01" >      <!-- Change this before each compile -->
 
   <name>Party App: Celebrity Face Match</name>
   <description>
@@ -25,10 +25,10 @@
 
 
   <!-- Android only -->
-    
-<platform name="android">       
-   <preference name="android-installLocation" value="auto" />     
-   <preference name="android-minSdkVersion" value="24" />
+
+<platform name="android">
+  <preference name="android-installLocation" value="auto" />
+  <preference name="android-minSdkVersion" value="24" />
   <preference name="android-targetSdkVersion" value="26" />
   <preference name="SplashMaintainAspectRatio" value="true"/>
   <preference name="SplashShowOnlyFirstTime" value="true"/>
@@ -63,16 +63,21 @@
 
 
     <access origin="*" />    
-    <allow-intent href="https://hpssjellis.github.io/celebclassify/*" />
+    <allow-intent href="https://www.rocksetta.com/party-app/*" />
 
   <!--  <preference name="AndroidPersistentFileLocation" value="Internal" />  -->
- <!--   <preference name="permissions" value="none" />   -->
+    <preference name="permissions" value="none" />   
     <plugin name="cordova-plugin-whitelist" spec="~1" /> 
  <!--   <plugin name="cordova-plugin-file" spec="~6" source="npm" />  -->
     
   <!--    <plugin name="cordova-plugin-camera" source="npm" version="4.0.3" />-->
     
+ 
     
-   <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" /> 
+ <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/VirtuoWorks/CanvasCameraPlugin.git" />   
+    
+    
+    
+ <!--    <plugin name="com.virtuoworks.cordova-plugin-canvascamera" spec="https://github.com/hpssjellis/CanvasCameraPlugin" /> -->
     <engine name="android" spec="~7.0.0" />
 </widget>
