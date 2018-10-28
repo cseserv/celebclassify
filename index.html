@@ -118,10 +118,11 @@ app.initialize();
       <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:  https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' data: content:;">
       
 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
- 
+ <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' https://www.rocksetta.com/party-app/ 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
+
       
             -->     
-<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>  
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self'  'unsafe-inline'; script-src https://www.rocksetta.com/party-app/ 'self' 'unsafe-inline' 'unsafe-eval'"/>  
   
       
       
@@ -148,7 +149,7 @@ app.initialize();
             <div class="action stop" id="stop">Stop</div>
 
         </div>
-        <div id="myDivTest" style="width:300px;  height:400px; overflow:scroll; ">...</div><br>
+        <div id="myDivTest" style="width:800px;  height:400px; overflow:scroll; ">...</div><br>
     </div>
 </div>
     <hr>
@@ -167,20 +168,20 @@ app.initialize();
     
     
 <!-- Load Tensorflowjs from here -->
-<script src="tfjs13-1.js"> </script> 
+<script src="https://www.rocksetta.com/party-app/tfjs13-1.js"> </script> 
 
 <!-- Load face-api from here -->
-<script src="face-api.min.js"></script>
+<script src="https://www.rocksetta.com/party-app/face-api.min.js"></script>
 
 <!-- Load KNN Classifier from here -->
-<script src="knn-classifier0-2-2.js"></script> 
+<script src="https://www.rocksetta.com/party-app/knn-classifier0-2-2.js"></script> 
 
 
 
 
  
-<input type="hidden" id="myInFile" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.json"> <br>
-<input type="hidden" id="myInText" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierLinks.txt"> <br>
+<input type="hidden" id="myInFile" size="120" value="https://www.rocksetta.com/party-app/myClassifierModel01.json"> <br>
+<input type="hidden" id="myInText" size="120" value="https://www.rocksetta.com/party-app/myClassifierLinks.txt"> <br>
 
   
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds......<br>
@@ -205,11 +206,13 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
 
 
 
-<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
 <canvas id="my32x32CanvasA" width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas>
 <br>
-<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas>
+<canvas id="myFaceCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
+<br>
+<canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas><br>
+<!-- <canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas> -->
+<canvas id="myBorderAsCanvas" style="position:relative; left:0px; top:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas>
 
 
  <div id="myDiv01">...</div><br>     
@@ -413,10 +416,10 @@ myRunFace = async function() {
    document.getElementById('myDiv01').innerHTML +=  'knn-classifier loaded'    
                                                                                            
    net = new faceapi.FaceLandmark68TinyNet()       // made it global                                                                                      
-   await net.load('https://hpssjellis.github.io/celebclassify/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
+   await net.load('https://www.rocksetta.com/party-app/face_landmark_68_tiny_model-weights_manifest.json')                                                                                                                                 
    console.log('face_landmark_68_tiny_model loaded')
                                                                                              
-   await faceapi.loadTinyYolov2Model('https://hpssjellis.github.io/celebclassify/')
+   await faceapi.loadTinyYolov2Model('https://www.rocksetta.com/party-app/')
    console.log('loadTinyYolov2Model loaded')
                                                                                              
    myShowHide()  
@@ -569,7 +572,7 @@ myPredict = async function(){
      // console.log(myMatchArray[myIt])                                                                                              
       if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
         // console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
-         document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
+         document.getElementById('myDivTest').innerHTML = '<font color=red>Done:<br></font>'+ document.getElementById('myDivTest').innerHTML                                                                                  
          myStopAuto()                                                                                     
       }  
     }  // end for     
@@ -591,7 +594,7 @@ myPredict = async function(){
                                                                                                                 
    // document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>This match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                                                                  
-    document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>Nearest Match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
+    document.getElementById('myDivTest').innerHTML =  'Nearest: <span style=color:blue; onclick={myLoadOneImage('+result.classIndex+')}>'+myGroups[result.classIndex]+ '</span><br>' + document.getElementById('myDivTest').innerHTML                                                                                        
                                                                        
                                                                                            
   } // end box drawing OK                                                                                             
@@ -676,8 +679,8 @@ myLoadOneImage  = async function(myGroupNumber){
    console.log('Define Model')                                                                                                                                                                                       
    const myClassifierModel = tf.model({inputs: myLayerList[1], outputs: myConcatenate1Dense4});    // This would be a global model. With list of inputs as an array                                                                                                                                                                                         
    //myClassifierModel.summary()    // show a summary of the load
-   console.log('myClassifierModel.layers[myMaxClasses]')     
-   console.log(myClassifierModel.layers[myMaxClasses])
+   //console.log('myClassifierModel.layers[myMaxClasses]')     
+   //console.log(myClassifierModel.layers[myMaxClasses])
    myPassedClassifier.getClassifierDataset()[0].print(true)                                                                                            
                                                                                              
    for (let myClassifierLoop = 0; myClassifierLoop < myMaxClasses; myClassifierLoop++ ){   // since the first layers are inputs must add maxClasses   
@@ -702,7 +705,7 @@ myClassifierSave  = async function(){
                                                                                                                                                                                         
    const myClassifierModel2 = await myDefineClassifierModel(classifier)         // pass global classifier                                                                                                                                                                                                                                                                      
    myClassifierModel2.save('downloads://myClassifierModel01')  
-   myClassifierModel2.summary(null,null,x => {document.getElementById('myDivSummary').innerHTML += x + '<br>'});                                                                                                                                                                                                                                                                             
+   //myClassifierModel2.summary(null,null,x => {document.getElementById('myDivSummary').innerHTML += x + '<br>'});                                                                                                                                                                                                                                                                             
 }
                                                                                              
  
@@ -736,15 +739,15 @@ myClassifierLoad  = async function(){
                                               
       // console.log('myLoadedModel.layers['+myWeightLoop+']')   
       // console.log(myLoadedModel.layers[myWeightLoop])          
-      console.log('myLoadedModel.layers['+myWeightLoop+'].getWeights()[0].print(true)') 
+     // console.log('myLoadedModel.layers['+myWeightLoop+'].getWeights()[0].print(true)') 
      // myLoadedModel.layers[myWeightLoop].getWeights()[0].print(true)                                                                                        
       myIncomingClassifier[myWeightLoop - myDenseStart] =  myLoadedModel.layers[myWeightLoop].getWeights()[0] 
       myGroups[myWeightLoop - myDenseStart] =  myLoadedModel.layers[myWeightLoop].name     // hopefully the name is the group name                                                                                     
    }
-  console.log('Printing all the incoming classifiers')
-  for (x=0;  x < myIncomingClassifier.length ; x++){
-    myIncomingClassifier[x].print(true)                                                                                          
-  }                                                                                           
+ // console.log('Printing all the incoming classifiers')
+ // for (x=0;  x < myIncomingClassifier.length ; x++){
+ //   myIncomingClassifier[x].print(true)                                                                                          
+ // }                                                                                           
   console.log('Activating Classifier')   
   
   classifier.dispose() // clear old classifier 
@@ -844,7 +847,7 @@ myStopAuto  = async function(){
   if (myFileName != null){  
     model = await tf.loadModel(myFileName);     // should make the model a global variable
     document.getElementById('myDivSummary').innerHTML = ''      
-    await model.summary(null,null,x => {document.getElementById('myDivSummary').innerHTML += x + '<br>'});
+  //  await model.summary(null,null,x => {document.getElementById('myDivSummary').innerHTML += x + '<br>'});
    // await myPredict()
   }                                                                           
 }                                                                                             
