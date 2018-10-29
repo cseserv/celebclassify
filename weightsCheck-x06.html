@@ -1,73 +1,25 @@
 
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.4"> </script> 
-Should extract the binary files using the json file
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3"> </script> 
+Extract weights for consistent float32 Tensorflowjs saved model binary url <br>
+<input id="myBinaryFile" type="text" size="130" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.weights.bin"><br><br>
 
 
-LOAD JSON URL <input id="myJsonFile" type="text" size="120" value="https://hpssjellis.github.io/celebclassify/myClassifierModel01.weights.bin"><br><br>
-Load Binary  URL sub folder <input id="myBinaryFile" type="text" size="120" value="strange"><br>  
-<br>
-Strange, the only way I can get this running is when tf.io.loadWeights() is by using a sub folder called strange
+<input id="myButton4950" type="button" value="Extract Weights in JSON format" onclick="{                                                                                                                                                       
+  let myInline = (async function () {							    								    
+     const myBinaryFile = await	fetch(document.getElementById('myBinaryFile').value)    
+     const myBuffer =await  myBinaryFile.arrayBuffer() 
+     
+     const dv = new DataView(myBuffer);
+     var f32 = new Float32Array(myBuffer.byteLength / 4);
+     const littleEndian = true;
+	  
+     for (let i = 0; i < f32.length; i++) {
+        f32[i] = dv.getFloat32(i*4, littleEndian);
+     }   
 
-instead of the URL https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/saved-models/batches-20000-done.weights.bin"<br>
-<input id="myButton4950" type="button" value="View Saved Weights and JSON" onclick="{
-
-  const startTime = performance.now();
-  document.getElementById('myDiv4950').innerHTML = '<br>'
-  document.getElementById('myButton4950').style.backgroundColor = 'red'  
-                                                                                                                                                        
-  async function myGo6() {
-										    
-      const weightManifestUrl = document.getElementById('myJsonFile').value;
-
-      const manifest = await fetch(weightManifestUrl);
-      var weightManifest = await manifest.json();
-										    
-      //weightManifest.weightsManifest[0].paths[0] = document.getElementById('myBinaryFile').value										    
-      console.log('Showing the weightManifest')								    
-      console.log(weightManifest)									    
-      console.log('URL to load weights')								    
-      console.log(weightManifest.weightsManifest[0].paths[0])											    
-										    			
-      const weightMap = await tf.io.loadWeights(weightManifest.weightsManifest, document.getElementById('myBinaryFile').value );									    									    
-      console.log('Showing the weightMap')								
-      console.log(weightMap)								    
-
-      const endTime = performance.now();
-      document.getElementById('myDiv4950').innerHTML += 'Duration ' + (endTime-startTime).toFixed(4) +'ms <br>'		
-      document.getElementById('myLayers').value =  JSON.stringify(weightMap, null, 4)												  
-      document.getElementById('myButton4950').style.backgroundColor = 'lightgrey'                    
-  }
-
-  setTimeout(function(){  myGo6() }, 10);   // wait a bit for the GUI to update	
-}"><br><br>
-
-<div id='myDiv4950'>...</div><br><br>
-
-<textarea id="myLayers" rows=5 cols="100%"></textarea><br><br>
-
-LOAD BASE URL <input id="myBaseURL" type="text" size="120" value="https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/saved-models"><br><br>
-
-<input id="myButton4950" type="button" value="From TFJS" onclick="{
-                                                                                                                                                        
-  async function myGo6() {
-										    
-      const weightManifestUrl = document.getElementById('myJsonFile').value;
-
-      const manifest = await fetch(weightManifestUrl);
-      var weightManifest = await manifest.json();
-										   									    
-      console.log('Showing the weightManifest')								    
-      console.log(weightManifest)									    
-      console.log('URL to load weights')								    
-      console.log(weightManifest.weightsManifest[0].paths[0])											    
-										    			
-      const weightMap = await tf.io.loadWeights(weightManifest, document.getElementById('myBaseURL').value );									    									    
-      console.log('Showing the weightMap')								
-      console.log(weightMap)								    
-	
-      document.getElementById('myLayers').value =  JSON.stringify(weightMap, null, 4)												                    
-  }
-
-  setTimeout(function(){  myGo6() }, 10);   // wait a bit for the GUI to update	
-}"><br><br>
+     const myWeightsJSON = JSON.stringify(f32,null,4)  	  
+     document.getElementById('myWeights').value =  myWeightsJSON 
+     })()
+}"><br>
+<textarea id="myWeights" rows=15 cols="50"></textarea><br>
