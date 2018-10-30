@@ -280,7 +280,7 @@ myCheckGroups   = async function() {
                                                                                              
 myLoadManyImages = async function() {
   
-   const myIn = document.getElementById('myArray01').value.split('***')
+   myIn = document.getElementById('myArray01').value.split('***')    // made it global
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
