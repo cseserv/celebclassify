@@ -302,7 +302,7 @@ myLoadManyImages = async function() {
         img.onload = await async function() {
             ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
         }  // img  
-                                                                                             
+        tf.nextFrame();                                                                                     
        const img2 = await tf.fromPixels(my32x32CanvasA);          // now lets classify the image                                                                                    
        const myDetectMarks = await net.detectLandmarks(img2)                                                                                                                                                                                        
 
