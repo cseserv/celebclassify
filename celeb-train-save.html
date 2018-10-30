@@ -284,6 +284,12 @@ myLoadManyImages = async function() {
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
+                                                                                             
+    setTimeout(() => {     // main loop in a timer to slow it down
+                                                                                    
+                                                                                             
+                                                                                             
+                                                                                             
       myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
       myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
       let myI = parseInt(myIncomingImages[myIteration][0])
@@ -377,7 +383,12 @@ myLoadManyImages = async function() {
                                                                                              
        }                                                                                      
                                                                                              
-     }     // if                                                                                                                                                                                            
+     }     // if   
+                                                                                             
+                                                                                             
+
+    }, 1000);       // wait a second between each image training                                                                                   
+                                                                                             
    }       // for                                                                        
   // console.log(myIncomingImages)                                                  
   // console.log(myGroups)                                                                                        
