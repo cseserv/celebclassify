@@ -398,13 +398,13 @@ myLoadManyImages = async function() {
   console.log('classifier.getClassifierDataset()')         
   console.log(classifier.getClassifierDataset())    
                                                                                              
- console.log('classifier.getClassifierDataset()[0].print(true)') 
- classifier.getClassifierDataset()[0].print(true) 
+// console.log('classifier.getClassifierDataset()[0].print(true)') 
+// classifier.getClassifierDataset()[0].print(true) 
                                                                                              
                           
- console.log('classifier.getClassifierDataset()[0]')                                                                                             
+ console.log('classifier.getClassifierDataset()[0].dataSync()')                                                                                             
                           
- console.log(classifier.getClassifierDataset()[0])                                                                                             
+ console.log(classifier.getClassifierDataset()[0].dataSync())                                                                                             
                                                                                              
   // console.log(myIncomingImages)                                                  
   // console.log(myGroups)                                                                                        
