@@ -398,7 +398,7 @@ myPredict = async function(){
                                                                                            
      myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);    
      tf.nextFrame()                                                                                      
-     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 100);   // number of celbrities to match
+     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of celbrities to match
      
      console.log('result')   
      console.log(result)
