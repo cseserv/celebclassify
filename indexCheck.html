@@ -31,6 +31,11 @@
 <input type="hidden" value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
  
+width: <input type="number" id="myWid" value="320" size="5"> <br>
+height: <input type="number" id="myHei" value="320" size="5"> <br>
+
+
+
 Analyse every <input type="number" id="myInterval" value="2000" size="5"> milliseconds<br>
 <input type="button" id="myButtonAuto" value="Restart" onclick="{takeAuto()}"> 
 <input type="button" value="Stop" onclick="{myStopAuto()}">
@@ -383,8 +388,14 @@ myPredict = async function(){
      tf.nextFrame()                                 
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
-                                                                                             
-     myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
+                                                                                           
+     wid =   document.getElementById('myWid').value                                         
+     hei =   document.getElementById('myHei').value                                                                                    
+                                                                                           
+   
+     myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, wid, hei);                                                                                          
+
+//    myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
      tf.nextFrame()                                                                                    
      let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
      const myLandmarks = await net.detectLandmarks(img3)                                                                                                                                                                                      
