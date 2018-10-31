@@ -642,9 +642,11 @@ getVideo = async function() {
                      
     function(stream) {
       myVideoStream.srcObject = stream   
-      myVideoStream.play();
-      console.log('myVideoStream.width')   
-      console.log(myVideoStream.width)                                                                                    
+      myVideoStream.play(); 
+      console.log('myVideoElement.width')      
+      console.log(myVideoElement.width)      
+      console.log('myVideoElement.height')      
+      console.log(myVideoElement.height)                                                                                     
   }, 
                      
    function(error) {
