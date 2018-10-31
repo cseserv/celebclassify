@@ -392,7 +392,8 @@ myPredict = async function(){
        newArray2[j][0] = myLandmarks._faceLandmarks[j].x                                                                
        newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
      }                                                                                          
-                                                                                                    
+     console.log('newArray2')                                                                  
+     console.log(newArray2)                                                                                               
      myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);    
      tf.nextFrame()                                                                                      
      const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
