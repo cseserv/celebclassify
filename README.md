@@ -13,6 +13,10 @@ https://hpssjellis.github.io/celebclassify/weightsCheck-x06.html
 https://hpssjellis.github.io/celebclassify/indexCheck.html
 
 
+https://hpssjellis.github.io/celebclassify/ellistest.jpg
+
+
+
 
 
 or load the app from phonegap build
