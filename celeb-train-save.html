@@ -318,6 +318,11 @@ myLoadManyImages = async function() {
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
   
+                                                                
+       console.log('newArray2')                                                                  
+       console.log(newArray2)                                                                                            
+                                                                                             
+                                                                                             
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
        const forwardParams = {inputSize: 'sm', scoreThreshold:0.5}   // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
