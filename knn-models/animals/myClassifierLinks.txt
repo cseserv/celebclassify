@@ -1,0 +1,5 @@
+0,jeremy_ellis,https://hpssjellis.github.io/celebclassify/ellistest.jpg***
+1,hairless_cat,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScMgmN9yi44Ju3kuY3Nd485PzG72FNlm_5Tjgr-IKxx3gb_4EwQ***
+2,pig,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD-OqJZfq6xX8bDory5b0ePn2tr2Pd1pekXC5i3pB_GcWpdhjCVQ***
+3,dog,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-tj9Hwt_rHo0TQzXQ9b4vM_w8cB1zAc2OE_xEVizFRXY1H0IgA***
+4,chimp,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvtDHXf01zI-RKZ2sCuLw3REC0Pj5omNMWClO_B-s09uq5pPOm***
