@@ -105,6 +105,7 @@ Analyse every <input type="number" id="myInterval" value="2000" size="5"> millis
 let myGroups = []
 let newArray = []  
 let newArray2 = []  
+let newArray3 = []  
 let myFaceToClose = 0    // pixels to make bounding box bigger
 let myIncomingClassifier = []    
 let myIncomingImages = []  
@@ -237,15 +238,15 @@ myLoadManyImages = async function() {
                                                                                          
      let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
      const myLandmarks = await net.detectLandmarks(img3)                                                                                                                                                                                      
-  
+      newArray3.length = 0     // clear the array
      for (let j=0;  j < myLandmarks._faceLandmarks.length; j++ ){  
-       newArray2[j] = []                                                                                        
-       newArray2[j][0] = myLandmarks._faceLandmarks[j].x                                                                
-       newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
+      // newArray3[j] = []                                                                                    
+       newArray3[j][0] = myLandmarks._faceLandmarks[j].x                                                                
+       newArray3[j][1] = myLandmarks._faceLandmarks[j].y  
      }                                                                                          
                                                                                                     
     // myCTX3.drawImage(can, 0, 0, myCanvasElement3.width, myCanvasElement3.height);                                                                                                                                                                                            
-     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
+     const result = await classifier.predictClass(tf.tensor2d(newArray3, shape=[68,2]), 3);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
                                                                                          
@@ -425,10 +426,11 @@ myPredict = async function(){
      myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
      tf.nextFrame()                                                                                    
      let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
-     const myLandmarks = await net.detectLandmarks(img3)                                                                                                                                                                                      
-  
+     const myLandmarks = await net.detectLandmarks(img3) 
+                                                                                           
+     newArray2.length = 0  // clear the array
      for (let j=0;  j < myLandmarks._faceLandmarks.length; j++ ){  
-       newArray2[j] = []                                                                                        
+      // newArray2[j] = []                                                                                      
        newArray2[j][0] = myLandmarks._faceLandmarks[j].x                                                                
        newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
      }           
