@@ -304,8 +304,11 @@ myShowInfo = async function() {
      myIn = document.getElementById('myArray01').value.split('***')    // made it global
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
-   for (myIteration = 0;  myIteration < myIn.length; myIteration++){                                                                                            
-      document.getElementById('myDiv123').innerHTML =  `<a href='https://www.google.com/search?&tbm=isch&q=`+myGroups[myIteration]+`' target='_blank'>Nearest Match: `+myGroups[myIteration]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
+   for (myIteration = 0;  myIteration < myIn.length; myIteration++){   
+                                                                                                   
+      myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
+      myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL                                                                                       
+      document.getElementById('myDiv123').innerHTML +=  `<a href='https://www.google.com/search?&tbm=isch&q=`+myIncomingImages[myIteration][1]+`' target='_blank'>Nearest Match: `+myIncomingImages[myIteration][1]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
    }                                                                                       
 }
                                                                                              
