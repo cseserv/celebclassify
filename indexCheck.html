@@ -411,7 +411,7 @@ myPredict = async function(){
      //make the height same as the orignal  but calulate a converted for the width.
      const myConvert = myCanvasElement3.height / result2[0]._box._height+(2*myFaceToClose)                                                                                      
                                                                                            
-     myCanvasElement3.width = result2[0]._box._width+(2*myFaceToClose) * myConvert
+     myCanvasElement3.width = parseFloat(result2[0]._box._width) * parseFloat(myConvert)
     // myCanvasElement3.height =  result2[0]._box._height+(2*myFaceToClose)   
        
       document.getElementById('myDiv01').innerHTML += '<br> myConvert: '+myConvert+' ,myCanvasElement3.width: '+myCanvasElement3.width+
