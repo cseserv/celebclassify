@@ -407,8 +407,14 @@ myPredict = async function(){
      wid =   document.getElementById('myWid').value                                         
      hei =   document.getElementById('myHei').value                                                                                    
      
-     myCanvasElement3.width = result2[0]._box._width+(2*myFaceToClose) 
-     myCanvasElement3.height =  result2[0]._box._height+(2*myFaceToClose)                                                                                     
+                                                                                           
+     //make the height same as the orignal  but calulate a converted for the width.
+     const myConvert = result2[0]._box._height+(2*myFaceToClose)  / myCanvasElement3.height                                                                                    
+                                                                                           
+     myCanvasElement3.width = result2[0]._box._width+(2*myFaceToClose) * myConvert
+    // myCanvasElement3.height =  result2[0]._box._height+(2*myFaceToClose)   
+                                                                                           
+                                                                                           
    
    //  myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose),         result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose));                                                                                          
   //   myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, wid, hei);   
