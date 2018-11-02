@@ -436,7 +436,7 @@ myPredict = async function(){
      }           
                                                                                            
      console.log('newArray2')                                                                  
-     console.log(newArray2)      
+     console.log(newArray2)                                                                                  
                                                                                            
      myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);    
      tf.nextFrame()                                                                                      
@@ -484,7 +484,11 @@ myPredict = async function(){
                                                                          
                                                                                            
   document.getElementById('myDivTest').innerHTML =  `<a href='https://www.google.com/search?&tbm=isch&q=`+myGroups[result.classIndex]+`' target='_blank'>Nearest Match: `+myGroups[result.classIndex]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
-                                                                                            
+  
+   
+  document.getElementById('myDiv01').innerHTML += myGroups[result.classIndex]+': '+ newArray2[0][0]+', '+ newArray2[0][1]+'<br>'                                                                                           
+                                                                                           
+                                                                                           
   } // end box drawing OK                                                                                             
  } else {(console.log('Need to train groups'))}
                                                                                              
