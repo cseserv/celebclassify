@@ -147,6 +147,7 @@ Analyse every <input type=number id="myInterval"  value="500" size=5> millisecon
 
  
 <div id="myDivSummary">...</div><br><br>
+<div id="myDiv01">...</div><br><br>
 
 
 <input type=button value="Load Group" onclick="{
@@ -355,9 +356,9 @@ myLoadManyImages = async function() {
        }                                                                                          
   
                                                                 
-       console.log('newArray2 for iteration: '+myIteration)                                                                  
-       console.log(newArray2)                                                                                            
-                                                                                             
+       //console.log('newArray2 for iteration: '+myIteration)                                                                  
+      // console.log(newArray2)                                                                                            
+        document.getElementById('myDiv01').innerHTML += myGroups[result.classIndex]+': '+ newArray2[0][0]+', '+ newArray2[0][1]+'<br>'                                                                                          
                                                                                              
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
