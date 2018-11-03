@@ -355,10 +355,10 @@ myLoadManyImages = async function() {
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
   
-                                                                
-       //console.log('newArray2 for iteration: '+myIteration)                                                                  
-      // console.log(newArray2)                                                                                            
-        document.getElementById('myDiv01').innerHTML += myGroups[result.classIndex]+': '+ newArray2[0][0]+', '+ newArray2[0][1]+'<br>'                                                                                          
+       ////////////////////////////////////////////////////////////////                                                         
+       console.log('newArray for iteration: '+myIteration)                                                                  
+       console.log(newArray)                                                                                            
+        document.getElementById('myDiv01').innerHTML += myIncomingImages[myIteration][0]+'= '+myIncomingImages[myIteration][0] +': '+newArray[0][0]+', '+ newArray[0][1]+'<br>'                                                                                          
                                                                                              
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
