@@ -352,7 +352,8 @@ myLoadManyImages = async function() {
        newArray.length=0                                                                                      
                                                                                              
        for (let j=0;  j < myDetectMarks._faceLandmarks.length; j++ ){  
-         newArray[j] = []                                                                                        
+         newArray[j] = []                                               
+         newArray[j].length = 0                                                                                           
          newArray[j][0] = myDetectMarks._faceLandmarks[j].x                                                                
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
