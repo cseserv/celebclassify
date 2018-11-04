@@ -260,9 +260,8 @@ myLoadManyImages = async function() {
        }                                                                                          
   
                                                                 
-       console.log('newArray2 for iteration: '+myIteration)                                                                  
-       console.log(newArray2)                                                                                            
-                                                                                             
+       console.log('newArray for iteration: '+myIteration)                                                                  
+       console.log(newArray)                                                                                            
                                                                                              
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
@@ -270,6 +269,9 @@ myLoadManyImages = async function() {
        result2 = await faceapi.tinyYolov2(can, forwardParams) 
        console.log(myI)  
        console.log(result2)  
+        document.getElementById('myDiv01').innerHTML += myGroups[result2.classIndex]+': '+ newArray[0][0]+', '+ newArray[0][1]+'<br>'                                                                                        
+                                                                                           
+                                                                                             
        if (result2.length > 0){     
                                                                                              
           myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
