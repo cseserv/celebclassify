@@ -317,11 +317,12 @@ myLoadManyImages = async function() {
                                                                                                  
           myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
                                                                                          
-          classifier.addExample(tf.tensor2d(newArray, shape=[68,2]), myI);                                                                                                                                                                                                                                              
+          classifier.addExample(tf.tensor2d(newArray2, shape=[68,2]), myI);                                                                                                                                                                                                                                              
           const myAddCount = classifier.getClassExampleCount()[myI]                                                                                     
           document.getElementById('myDivLoss').innerHTML += myAddCount + ' times, Example Added: to group #: '+ myI +'<br>'     
                                                                                              
-                                                                                                  
+     document.getElementById('myDiv01').innerHTML += myIncomingImages[myIteration][0]+'= '+myIncomingImages[myIteration][1] +': '+Math.round(newArray2[0][0])+', '+ Math.round(newArray2[0][1])+'<br>'                                                                                          
+                                                                                                    
                                                                                              
                                                                                              
                                                                                              
