@@ -262,8 +262,8 @@ myLoadManyImages = async function() {
                                                                                              
                                                                                              
   img.onload = await async function() {
-       myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  myCanvasElement.width, myCanvasElement.height);         
-    //   myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  img.width, img.height);                                        
+    //   myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  myCanvasElement.width, myCanvasElement.height);         
+       myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  img.width, img.height);                                        
   }  // img                                                                                             
   //myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
                                                                                              
