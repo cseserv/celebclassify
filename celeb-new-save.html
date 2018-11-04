@@ -365,7 +365,8 @@ myLoadManyImages = async function() {
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
                                                                                          
                                                                                              
-                                                                                             
+    document.getElementById('myDiv01').innerHTML += myI+': double check'+ Math.round(myLandmarks._faceLandmarks[0].x)+', '+ Math.round(myLandmarks._faceLandmarks[0].x)+'<br>'                                                                                         
+                                                                                                
                                                                                              
                                                                                              
                                                                                              
