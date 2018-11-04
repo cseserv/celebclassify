@@ -263,10 +263,10 @@ myLoadManyImages = async function() {
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
   
-         newArray[0][0] = 3   
-       newArray[0][1] = 4                                                              
+      //   newArray[0][0] = 3   
+      // newArray[0][1] = 4                                                              
        console.log('newArray first value for iteration: '+myIteration)                                                                  
-       console.log(newArray[0][1]+', '+newArray[0][1])                                                                                            
+       console.log(newArray[0][0]+', '+newArray[0][1])                                                                                            
                                                                                              
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
@@ -276,8 +276,8 @@ myLoadManyImages = async function() {
                                                                                              
        console.log('myI')                                                       
        console.log(myI)  
-       console.log('result2.classIndex') 
-       console.log(result2.classIndex)    
+       console.log('result2.length') 
+       console.log(result2.length)    
        document.getElementById('myDiv01').innerHTML += myGroups[result2.classIndex]+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
                                                                                            
                                                                                              
