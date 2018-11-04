@@ -113,7 +113,7 @@ live "Train" objects from the model and get results at the same time! <br>
 
 <canvas id="myFaceCanvas" width="640" height="480"  style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
 <canvas id="myVideoAsCanvas" width="640" height="480" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="position:relative; left:-640px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
+<canvas id="myBorderAsCanvas" style="position:relative; left:-480px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
 
  
 <!--
@@ -286,7 +286,7 @@ myLoadManyImages = async function() {
        console.log(result2.length)    
        console.log('result2.classIndex') 
        console.log(result2.classIndex)    
-       document.getElementById('myDiv01').innerHTML += myGroups[result2.classIndex]+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
+       document.getElementById('myDiv01').innerHTML += myI+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
                                                                                            
                                                                                              
        if (result2.length > 0){     
