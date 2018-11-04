@@ -280,6 +280,7 @@ myLoadManyImages = async function() {
       console.log('faceapi.tinyYolov2')                                                                                       
       result2 = await faceapi.tinyYolov2(myCanvasElement, forwardParams)                                                                                        
       tf.nextFrame()
+      console.log(result2)                                                                                        
     if (result2.length >= 1){     // box drawing working   
       console.log(result2.length)                                                                                       
       
@@ -288,7 +289,8 @@ myLoadManyImages = async function() {
                                                                                              
      let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
      let myCTX4 = myCanvasElement4.getContext('2d');
-     myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+     //myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+     myCTX4.drawImage(img, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
      tf.nextFrame()                                 
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
