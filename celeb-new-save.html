@@ -220,7 +220,12 @@ myShowInfo = async function() {
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
-  
+    let scoreThreshold = 0.5   //0.5
+  let sizeType = 'sm'      // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
+  let modelLoaded = false
+  let forwardTimes = []
+                                                                                             
+                                                                                             
    myIn = document.getElementById('myArray01').value.split('***')    // made it global
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
@@ -262,8 +267,8 @@ myLoadManyImages = async function() {
                                                                                              
                                                                                              
   img.onload = await async function() {
-    //   myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  myCanvasElement.width, myCanvasElement.height);         
-       myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  img.width, img.height);                                        
+       myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  myCanvasElement.width, myCanvasElement.height);         
+    //   myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  img.width, img.height);                                        
   }  // img                                                                                             
   //myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
                                                                                              
@@ -292,7 +297,9 @@ myLoadManyImages = async function() {
      let myCTX4 = myCanvasElement4.getContext('2d');
      //myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
      myCTX4.drawImage(img, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
-     tf.nextFrame()                                 
+     tf.nextFrame()   
+                                                                                             
+                                                                                             
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
                                                                                            
