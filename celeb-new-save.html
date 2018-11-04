@@ -220,10 +220,7 @@ myShowInfo = async function() {
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
-    let scoreThreshold = 0.5   //0.5
-  let sizeType = 'sm'      // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
-  let modelLoaded = false
-  let forwardTimes = []
+
                                                                                              
                                                                                              
    myIn = document.getElementById('myArray01').value.split('***')    // made it global
@@ -250,7 +247,7 @@ myLoadManyImages = async function() {
       console.log('image loaded')                                                                                       
                                                                                              
                                                                                              
-    let scoreThreshold = 0.5   //0.5
+  let scoreThreshold = 0.5   //0.5
   let sizeType = 'sm'      // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
   let modelLoaded = false
   let forwardTimes = []
