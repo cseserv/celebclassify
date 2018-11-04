@@ -2,6 +2,7 @@
 <!--   *******************************Start: What source js file to use? ****************************************************   -->
 
 
+
 <!-- the online version that these examples were made with  -->
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.1"></script>
@@ -61,9 +62,7 @@ live "Train" objects from the model and get results at the same time! <br>
  I am looking into how to save the knn-classfier data with labels. <br><br>
  Data from:
  
- <a href="https://www.imdb.com/list/ls000760476/">https://www.imdb.com/list/ls000760476/</a><br>
- 
- <a href="https://www.imdb.com/list/ls000061403/">https://www.imdb.com/list/ls000061403/</a> <br>
+ <a href="https://www.imdb.com/list/ls000760476/">https://www.imdb.com/list/ls000760476/</a>
  
 </div><br>
 
@@ -103,20 +102,10 @@ live "Train" objects from the model and get results at the same time! <br>
  
 <input type=text id="myInFile" size=120 value="models/myClassifierModel01.json"> <br>
 
-<input type=button value="Load Classifier" onclick="{myClassifierLoad()}"> <br>
+<input type=button value="Load Classifier" onclick="{myClassifierLoad()}"> 
  
  
 
- 
-<video  id="myVideoElement" width="640" height="480" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
-<canvas id="my32x32CanvasA"  width="640" height="480" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
-
-<canvas id="myFaceCanvas" width="640" height="480"  style="border: 1px solid #ddd;" title="myFaceCanvas: Zoomed in face"></canvas>
-<canvas id="myVideoAsCanvas" width="640" height="480" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
-<canvas id="myBorderAsCanvas" style="position:relative; left:-480px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
-
- 
-<!--
  
 <video  id="myVideoElement" width="320" height="320" style="display:inline; border: 1px solid #ddd;" title="myVideoElement: WebCam-Live"></video>
 <canvas id="my32x32CanvasA"  width="320" height="320" style="display:inline; border: 1px solid #ddd;  interpolation-mode: nearest-neighbor;" title="my32x32CanvasA: interval snapshots, presently for training"></canvas><br>
@@ -125,25 +114,18 @@ live "Train" objects from the model and get results at the same time! <br>
 <canvas id="myVideoAsCanvas" width="320" height="320" style="border: 1px solid #ddd;" title="myVideoAsCanvas: back layer"></canvas>
 <canvas id="myBorderAsCanvas" style="position:relative; left:-325px" title="myBorderAsCanvas: Layer with box, in front of myVideoAsCanvas interval snapshot"></canvas><br>
 
- 
- 
-
--->
- 
- 
- 
 <div id="myDivLoss">...</div><br> 
-<div id="myDiv01">...</div><br> 
  
  
  <br><br>
-<div id="myDivTest">...</div><br>
+
 
 Analyse every <input type=number id="myInterval"  value="500" size=5> milliseconds<br>
 <input type=button id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
 <input type=button value="Stop Auto" onclick="{myStopAuto()}"><br><br>
 
-
+<div id="myDivTest">...</div><br>
+<div id="myDiv01">...</div><br>
 
 
  
@@ -155,15 +137,9 @@ Analyse every <input type=number id="myInterval"  value="500" size=5> millisecon
 }">
  <input type=button value="Check Training" onclick="{
   myCheckGroups()                                                                                                 
-}"> 
- 
- <input type=button value="Google Search" onclick="{
-   myShowInfo()                                              
-}">
- 
- <br>
+}">  <br>
 To get faces use google search but set "tools" from "Not filtered by License" to "Labelled for reuse" I also set "any Size" to "medium"<br>
- <textarea id="myArray01" rows=10 cols=170>0,jeremy_ellis,https://hpssjellis.github.io/celebclassify/ellistest.jpg***
+ <textarea id="myArray01" rows=10 cols=120>0,jeremy_ellis,https://hpssjellis.github.io/celebclassify/ellistest.jpg***
 1,hairless_cat,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScMgmN9yi44Ju3kuY3Nd485PzG72FNlm_5Tjgr-IKxx3gb_4EwQ***
 2,pig,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD-OqJZfq6xX8bDory5b0ePn2tr2Pd1pekXC5i3pB_GcWpdhjCVQ***
 3,dog,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-tj9Hwt_rHo0TQzXQ9b4vM_w8cB1zAc2OE_xEVizFRXY1H0IgA***
@@ -173,8 +149,8 @@ To get faces use google search but set "tools" from "Not filtered by License" to
  
  <!--  ************* The entire next line can be replaced with the <script> tag for a more conventional approch. ****************** -->
 
-<!--<style id="myButton124"  onload="{document.getElementById('myButton124').click()}"  onclick="{  -->
-<script>
+<style id="myButton124"  onload="{document.getElementById('myButton124').click()}"  onclick="{
+
  ///////////////////////////////////// Global Variables ////////////////////////////////                                                                                            
                                                                                             
 //position:relative; left:-650px;
@@ -204,33 +180,15 @@ myCheckGroups   = async function() {
    } 
  }                                                                                            
                                                                                              
-                                                   
-myShowInfo = async function() {
                                                                                              
-     myIn = document.getElementById('myArray01').value.split('***')    // made it global
-   document.getElementById('myDivLoss').innerHTML = '' // clear it  
-                                                                                             
-   for (myIteration = 0;  myIteration < myIn.length; myIteration++){   
-                                                                                                   
-      myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
-      myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL                                                                                       
-      document.getElementById('myDiv123').innerHTML +=  `<a href='https://www.google.com/search?&tbm=isch&q=`+myIncomingImages[myIteration][1]+`' target='_blank'>`+myIteration+`: `+myIncomingImages[myIteration][1]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
-   }                                                                                       
-}
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
-  
-   myIn = document.getElementById('myArray01').value.split('***')    // made it global
+  document.getElementById('myDiv01').innerHTML =''
+   const myIn = document.getElementById('myArray01').value.split('***')
    document.getElementById('myDivLoss').innerHTML = '' // clear it  
                                                                                              
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
-                                                                                             
-  //  setTimeout(async function() {     // main loop in a timer to slow it down
-                                                                                    
-                                                                                             
-                                                                                             
-                                                                                             
       myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
       myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
       let myI = parseInt(myIncomingImages[myIteration][0])
@@ -243,52 +201,28 @@ myLoadManyImages = async function() {
                                                                                                                                                                                     
         let can = document.getElementById('my32x32CanvasA');
         let ctx = can.getContext('2d');  
-        ctx.clearRect(0,0,can.width,can.height);                                                                                     
-         tf.nextFrame();                                                                                      
+                                                                                             
      //const getIngredients = async () => {}                                                                                        
                                                                                              
         img.onload = await async function() {
             ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
         }  // img  
-        tf.nextFrame();                                                                                     
+                                                                                             
        const img2 = await tf.fromPixels(my32x32CanvasA);          // now lets classify the image                                                                                    
        const myDetectMarks = await net.detectLandmarks(img2)                                                                                                                                                                                        
-       tf.nextFrame();
 
-                                                                                             
-       
-       console.log('myDetectMarks._faceLandmarks[0].x') 
-       console.log(myDetectMarks._faceLandmarks[0].x)                                                                                          
-                                                                                             
-                                                                                             
-                                                                                             
-       newArray.length = 0;                                                                                      
        for (let j=0;  j < myDetectMarks._faceLandmarks.length; j++ ){  
-         newArray[j] = []                                                                                       
+         newArray[j] = []                                                                                        
          newArray[j][0] = myDetectMarks._faceLandmarks[j].x                                                                
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
   
-      //   newArray[0][0] = 3   
-      // newArray[0][1] = 4                                                              
-       console.log('newArray first value for iteration: '+myIteration)                                                                  
-       console.log(newArray[0][0]+', '+newArray[0][1])                                                                                            
-                                                                                             
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
        const forwardParams = {inputSize: 'sm', scoreThreshold:0.5}   // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
        result2 = await faceapi.tinyYolov2(can, forwardParams) 
-                                                                                             
-                                                                                             
-       console.log('myI')                                                       
        console.log(myI)  
-       console.log('result2.length') 
-       console.log(result2.length)    
-       console.log('result2.classIndex') 
-       console.log(result2.classIndex)    
-       document.getElementById('myDiv01').innerHTML += myI+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
-                                                                                           
-                                                                                             
+       console.log(result2)  
        if (result2.length > 0){     
                                                                                              
           myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
@@ -296,7 +230,7 @@ myLoadManyImages = async function() {
           classifier.addExample(tf.tensor2d(newArray, shape=[68,2]), myI);                                                                                                                                                                                                                                              
           const myAddCount = classifier.getClassExampleCount()[myI]                                                                                     
           document.getElementById('myDivLoss').innerHTML += myAddCount + ' times, Example Added: to group #: '+ myI +'<br>'     
-                                                                                             
+          document.getElementById('myDiv01').innerHTML += myI+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                         
                                                                                              
                                                                                              
        /////////////////////////////// prove we got a face ///////////////////////////////
@@ -310,17 +244,17 @@ myLoadManyImages = async function() {
       result2 = await faceapi.tinyYolov2(can, forwardParams)                                                                                        
                                                                                         
       faceapi.drawDetection('myBorderAsCanvas', result2.map(det => det.forSize(width, height)))   
-      tf.nextFrame();                                                                                       
+                                                                                             
                                                                                              
      let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
      let myCTX4 = myCanvasElement4.getContext('2d');
      myCTX4.drawImage(can, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
-     tf.nextFrame();                                 
+                                      
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
                                                                                              
      myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
-     tf.nextFrame();                                                                                    
+                                                                                         
      let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
      const myLandmarks = await net.detectLandmarks(img3)                                                                                                                                                                                      
   
@@ -334,7 +268,7 @@ myLoadManyImages = async function() {
      const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
-    tf.nextFrame();                                                                                     
+                                                                                         
                                                                                              
                                                                                              
                                                                                              
@@ -348,31 +282,10 @@ myLoadManyImages = async function() {
                                                                                              
        }                                                                                      
                                                                                              
-     }     // if   
-                                                                                             
-                                                                                             
-
-    //}, 1000);       // wait a second between each image training                                                                                   
-                                                                                             
-   }       // for      
-  console.log('classifier.getClassifierDataset()')         
-  console.log(classifier.getClassifierDataset())    
-                                                                                             
-// console.log('classifier.getClassifierDataset()[0].print(true)') 
-// classifier.getClassifierDataset()[0].print(true) 
-                                                                                             
-                          
-// console.log('classifier.getClassifierDataset()[0].dataSync()')                                                                                             
-                          
-// console.log(classifier.getClassifierDataset()[0].dataSync())                                                                                             
-                                                                                             
+     }     // if                                                                                                                                                                                            
+   }       // for                                                                        
   // console.log(myIncomingImages)                                                  
   // console.log(myGroups)                                                                                        
-  
-                                                                                             
-                                                                                           
-                                                                                             
-                                                                                             
                                                                                              
 }
                                                                                              
@@ -721,11 +634,9 @@ myStopAuto  = async function(){
                                                                                              
                                                                                              
 //////////////////////////////////   WEIRD STYLE TAG THAT IS ACTUALLY A DYNAMIC SCRIPT TAG ///////////////////                                                                                          
-                    
- 
- </script>
                                                                                              
-<!--}"></style>  -->
+                                                                                             
+}"></style>
 <!-- If you replaced the <style> tag with a <script> tag don't forget to change the above line to just </script>  -->
  
  
