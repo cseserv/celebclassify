@@ -167,7 +167,7 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 1,hairless_cat,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScMgmN9yi44Ju3kuY3Nd485PzG72FNlm_5Tjgr-IKxx3gb_4EwQ***
 2,pig,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD-OqJZfq6xX8bDory5b0ePn2tr2Pd1pekXC5i3pB_GcWpdhjCVQ***
 3,dog,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-tj9Hwt_rHo0TQzXQ9b4vM_w8cB1zAc2OE_xEVizFRXY1H0IgA***
-4,chimp,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvtDHXf01zI-RKZ2sCuLw3REC0Pj5omNMWClO_B-s09uq5pPOm***</textarea> 
+4,chimp,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvtDHXf01zI-RKZ2sCuLw3REC0Pj5omNMWClO_B-s09uq5pPOm</textarea> 
  
  <!-- ************* Next we define the Javascript inside a web element so that the page can be refreshed dynamically **************-->
  
@@ -250,9 +250,23 @@ myLoadManyImages = async function() {
   let modelLoaded = false
   let forwardTimes = []
                                                                                              
+
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
   let myCanvasElement = document.getElementById('my32x32CanvasA');
-  let myCTX = myCanvasElement.getContext('2d');                                                                                             
-  myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+  let myCTX = myCanvasElement.getContext('2d');           
+                                                                                             
+  img.onload = await async function() {
+    //   myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);         
+       myCTX.drawImage(img, 0, 0, img.width, img.height, 0, 0,  img.width, img.height);                                        
+  }  // img                                                                                             
+  //myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+                                                                                             
+                                                                                             
+                                                                                             
   tf.nextFrame()                                                                                          
 //  if (classifier.getNumClasses() >= 1){    // have groups to rate
                                             
