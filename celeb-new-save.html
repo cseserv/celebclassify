@@ -242,7 +242,7 @@ myLoadManyImages = async function() {
   /////////////////////////// new stuff ///////////////////////////////////                                                                                           
                                                                                              
                                                                                              
-                                                                                             
+      console.log('image loaded')                                                                                       
                                                                                              
                                                                                              
     let scoreThreshold = 0.5   //0.5
@@ -261,10 +261,11 @@ myLoadManyImages = async function() {
       canvas.width = width
       canvas.height = height
       const forwardParams = {inputSize: sizeType, scoreThreshold}
+      console.log('faceapi.tinyYolov2')                                                                                       
       result2 = await faceapi.tinyYolov2(myCanvasElement, forwardParams)                                                                                        
       tf.nextFrame()
     if (result2.length >= 1){     // box drawing working   
-                                                                                             
+      console.log(result2.length)                                                                                       
       
       faceapi.drawDetection('myBorderAsCanvas', result2.map(det => det.forSize(width, height)))   
        tf.nextFrame()                                                                                      
