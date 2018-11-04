@@ -254,6 +254,9 @@ myLoadManyImages = async function() {
        const img2 = await tf.fromPixels(my32x32CanvasA);          // now lets classify the image                                                                                    
        const myDetectMarks = await net.detectLandmarks(img2)                                                                                                                                                                                        
        tf.nextFrame();
+       newArray[0][0] = 3   
+       newArray[0][1] = 4
+                                                                                             
        newArray.length = 0;                                                                                      
        for (let j=0;  j < myDetectMarks._faceLandmarks.length; j++ ){  
          newArray[j] = []                                                                                       
@@ -275,7 +278,7 @@ myLoadManyImages = async function() {
        console.log(myI)  
        console.log('result2.classIndex') 
        console.log(result2.classIndex)    
-        document.getElementById('myDiv01').innerHTML += myGroups[result2.classIndex]+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
+       document.getElementById('myDiv01').innerHTML += myGroups[result2.classIndex]+': '+ Math.round(newArray[0][0])+', '+ Math.round(newArray[0][1])+'<br>'                                                                                        
                                                                                            
                                                                                              
        if (result2.length > 0){     
