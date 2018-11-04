@@ -226,11 +226,8 @@ myLoadManyImages = async function() {
                                                                                              
    for (myIteration = 0;  myIteration < myIn.length; myIteration++){ 
                                                                                              
-  //  setTimeout(async function() {     // main loop in a timer to slow it down
-                                                                                    
-                                                                                             
-                                                                                             
-                                                                                             
+
+                                                                                            
       myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
       myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL
       let myI = parseInt(myIncomingImages[myIteration][0])
@@ -240,7 +237,163 @@ myLoadManyImages = async function() {
         let img = new Image()
         img.src = myFileName2
         img.crossOrigin = 'Anonymous'                                                                                            
-                                                                                                                                                                                    
+      
+                                                                                             
+  /////////////////////////// new stuff ///////////////////////////////////                                                                                           
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+    let scoreThreshold = 0.5   //0.5
+  let sizeType = 'sm'      // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
+  let modelLoaded = false
+  let forwardTimes = []
+                                                                                             
+  let myCanvasElement = document.getElementById('my32x32CanvasA');
+  let myCTX = myCanvasElement.getContext('2d');                                                                                             
+  myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);  
+  tf.nextFrame()                                                                                          
+//  if (classifier.getNumClasses() >= 1){    // have groups to rate
+                                            
+      let { width, height } = faceapi.getMediaDimensions(myCanvasElement)
+      let canvas = document.getElementById('myBorderAsCanvas')
+      canvas.width = width
+      canvas.height = height
+      const forwardParams = {inputSize: sizeType, scoreThreshold}
+      result2 = await faceapi.tinyYolov2(myCanvasElement, forwardParams)                                                                                        
+      tf.nextFrame()
+    if (result2.length >= 1){     // box drawing working   
+                                                                                             
+      
+      faceapi.drawDetection('myBorderAsCanvas', result2.map(det => det.forSize(width, height)))   
+       tf.nextFrame()                                                                                      
+                                                                                             
+     let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
+     let myCTX4 = myCanvasElement4.getContext('2d');
+     myCTX4.drawImage(myVideoStream, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
+     tf.nextFrame()                                 
+     let myCanvasElement3 = document.getElementById('myFaceCanvas');
+     let myCTX3 = myCanvasElement3.getContext('2d');
+                                                                                           
+     myCTX3.clearRect(0,0, myCanvasElement3.width, myCanvasElement3.height)                                                                                      
+     wid =   document.getElementById('myWid').value                                         
+     hei =   document.getElementById('myHei').value                                                                                    
+     
+     /////////////////////////////////////////////////////                                                                                      
+     //make the height same as the orignal  but calulate a converted for the width.
+     const myConvert = myCanvasElement3.height / result2[0]._box._height+(2*myFaceToClose)                                                                                      
+                                                                                           
+     myCanvasElement3.width = parseFloat(result2[0]._box._width) * parseFloat(myConvert)
+    // myCanvasElement3.height =  result2[0]._box._height+(2*myFaceToClose)   
+       
+      document.getElementById('myDiv01').innerHTML += '<br> myConvert: '+myConvert+' ,myCanvasElement3.width: '+myCanvasElement3.width+
+            ', result2[0]._box._height: '+result2[0]._box._height+' ,result2[0]._box._width: '+result2[0]._box._width+                                                                                
+                                                                                           
+                                                                                           
+                                                                                           
+   
+   //  myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose),         result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose));                                                                                          
+  //   myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, wid, hei);   
+     myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
+     tf.nextFrame()                                                                                    
+     let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
+     const myLandmarks = await net.detectLandmarks(img3) 
+                                                                                           
+     newArray2.length = 0  // clear the array
+     for (let j=0;  j < myLandmarks._faceLandmarks.length; j++ ){  
+       newArray2[j] = []                                                                                      
+       newArray2[j][0] = myLandmarks._faceLandmarks[j].x                                                                
+       newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
+     }           
+                                                                                           
+     console.log('newArray2')                                                                  
+     console.log(newArray2)                                                                                  
+  
+  // classifier save should go here.   ///////////////////////////////////////                                                                                           
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                                 
+          myGroups[myI] =  myIncomingImages[myIteration][1]       // add the label to the myGroups array                                                             
+                                                                                         
+          classifier.addExample(tf.tensor2d(newArray, shape=[68,2]), myI);                                                                                                                                                                                                                                              
+          const myAddCount = classifier.getClassExampleCount()[myI]                                                                                     
+          document.getElementById('myDivLoss').innerHTML += myAddCount + ' times, Example Added: to group #: '+ myI +'<br>'     
+                                                                                             
+                                                                                                  
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+     myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);    
+     tf.nextFrame()                                                                                      
+     const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 1);   // number of celebrities to match
+     
+     console.log('result')   
+     console.log(result)
+                                                                                           
+    faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 3, color: 'red' })    // may remove these eventually  
+    tf.nextFrame()                                                                                       
+    myMatchCount += 1
+    myMatchArray[myMatchCount] = result.classIndex 
+                                                                                           
+     
+     console.log('myMatchArray')   
+     console.log(myMatchArray)                                                                                      
+                                                                                           
+   // console.log(document.getElementById('myContinuous').value)
+    if (document.getElementById('myContinuous').checked == false){                                                                                       
+                                                                                           
+    for (let myIt = 0 ; myIt < myMatchArray.length-1; myIt++){  // don't check this one against itself  
+      console.log(myMatchArray[myIt])                                                                                              
+      if (myMatchArray[myIt] == myMatchArray[myMatchCount]){   // check if this one was matched before  
+         console.log(myMatchArray[myIt] + ' == ' +myMatchArray[myMatchCount])  
+         document.getElementById('myDivTest').innerHTML = 'App Finished, Double Match Found<br>'+ document.getElementById('myDivTest').innerHTML                                                                                  
+         myStopAuto()                                                                                     
+      }  
+    }     
+                                                                                           
+    }                                                                                       
+    myLoadOneImage(result.classIndex)                                                                                         
+                                                                                             
+                                                                                             
+   // document.getElementById('myDivTest').innerHTML = 'Group: ' + result.classIndex + ', '+ 
+  //     Math.round(result.confidences[result.classIndex]*100)+ '% ' + myGroups[result.classIndex]+ '<br>'  + 
+  //     document.getElementById('myDivTest').innerHTML
+                                                                                           
+                                                                                                        
+   // document.getElementById('myDivTest').innerHTML =  '<div style=color:red; onclick={myLoadOneImage('+result.classIndex+')}>Nearest Match: '+myGroups[result.classIndex]+ '</div>' + document.getElementById('myDivTest').innerHTML                                                                                        
+                                                                                                         
+ //   document.getElementById('myDivTest').innerHTML =  `<div style=color:red; onclick={window.location.href='https://www.google.com/search?&tbm=isch&q=`+myGroups[result.classIndex]+`'}>Nearest Match: `+myGroups[result.classIndex]+ `</div>` + document.getElementById('myDivTest').innerHTML                                                                                        
+ 
+                                                                                           
+ // document.getElementById('myDivTest').innerHTML =  `<a href='https://www.google.com/search?&tbm=isch&q=`+myGroups[result.classIndex]+`'>Nearest Match: `+myGroups[result.classIndex]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
+                                                                         
+                                                                                           
+  document.getElementById('myDivTest').innerHTML =  `<a href='https://www.google.com/search?&tbm=isch&q=`+myGroups[result.classIndex]+`' target='_blank'>Nearest Match: `+myGroups[result.classIndex]+ `</a><br>` + document.getElementById('myDivTest').innerHTML                                                                                        
+  
+   
+  document.getElementById('myDiv01').innerHTML += myGroups[result.classIndex]+': '+ newArray2[0][0]+', '+ newArray2[0][1]+'<br>'                                                                                           
+                                                                                           
+                                                                                           
+  } // end box drawing OK                                                                                             
+// } else {(console.log('Need to train groups'))}                                                                                         
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+///////////////////////////////// end new stuff //////////////////////////                                                                                             
+                                                                                             
+       /*                                                                                      
+                                                                                             
+                                                                                             
         let can = document.getElementById('my32x32CanvasA');
         let ctx = can.getContext('2d');  
         ctx.clearRect(0,0,can.width,can.height);                                                                                     
@@ -331,13 +484,18 @@ myLoadManyImages = async function() {
         ///////////////////////////////// end proof ///////////////////////////////////                                                                                     
                                                                                              
                                                                                              
-       }                                                                                      
+       }  
                                                                                              
-     }     // if   
+                                                                                             
+    */                                                                                         
+                                                                                             
+                                                                                             
+                                                                                             
+     }     // if   my file name
                                                                                              
                                                                                              
 
-    //}, 1000);       // wait a second between each image training                                                                                   
+                                                                               
                                                                                              
    }       // for      
   console.log('classifier.getClassifierDataset()')         
