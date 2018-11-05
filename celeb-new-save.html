@@ -296,7 +296,7 @@ myLoadManyImages = async function() {
                                                                                                                                                                                     
         let can = document.getElementById('my32x32CanvasA');
         let ctx = can.getContext('2d');  
-                                                                                             
+        ctx.clearRect( 0, 0, can.width, can.height)                                                                                     
      //const getIngredients = async () => {}                                                                                        
                                                                                              
         img.onload = await async function() {
