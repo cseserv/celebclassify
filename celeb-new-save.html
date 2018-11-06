@@ -137,7 +137,14 @@ Analyse every <input type=number id="myInterval"  value="500" size=5> millisecon
 }">
  <input type=button value="Check Training" onclick="{
   myCheckGroups()                                                                                                 
-}">  <br>
+}">
+ 
+ <input type=button value="Google Search" onclick="{
+   myShowInfo()                                              
+}"> 
+ 
+ 
+ <br>
 To get faces use google search but set "tools" from "Not filtered by License" to "Labelled for reuse" I also set "any Size" to "medium"<br>
  <textarea id="myArray01" rows=10 cols=120>0,Megan_Fox,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezKBWzw2Svr0-iHLi4ZHmxMqJWxAFcNLzzaf_0uomkDRBH2n5***
 1,Mila_Kunis,https://m.media-amazon.com/images/M/MV5BODQyNTQyNzY4MV5BMl5BanBnXkFtZTcwODg5MDA3MQ@@._V1_UY209_CR17,0,140,209_AL_.jpg***
@@ -190,8 +197,7 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 48,Claire_Danes,https://m.media-amazon.com/images/M/MV5BMTMyMzQ1Mjk3M15BMl5BanBnXkFtZTcwNzk3ODMxNw@@._V1_UY209_CR10,0,140,209_AL_.jpg***
 49,Sienna_Miller,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSetnCAq3xYdbWq5MSAX5BQm3EUSXXDrdSRY-YeoexuVCOtFVkdZQ***
 50,Shannyn_Sossamon,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvKaBv7N4TaO6cT0yfmwrHqrWOPZafvNvwmOiklCna4KTv8EAM***
-51,Amber_Heard,https://m.media-amazon.com/images/M/MV5BMTQ0MjA1ODU0MV5BMl5BanBnXkFtZTgwNTczNTkwNjE@._V1_UY209_CR7,0,140,209_AL_.jpg***
-52,Piper_Perabo,https://m.media-amazon.com/images/M/MV5BMGEwY2E4MzEtNjVhNy00ZTUyLWE4YmUtODIxNzU2NGRmNDUzXkEyXkFqcGdeQXVyMTMxNTAxODk@._V1_UY209_CR34,0,140,209_AL_.jpg***
+51,Fan_Bingbing,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbF1dyaYAIy_rUjjaAbWRNHuK3So_ZQArFn09VMrS8pSGAhmYHXA***52,Piper_Perabo,https://m.media-amazon.com/images/M/MV5BMGEwY2E4MzEtNjVhNy00ZTUyLWE4YmUtODIxNzU2NGRmNDUzXkEyXkFqcGdeQXVyMTMxNTAxODk@._V1_UY209_CR34,0,140,209_AL_.jpg***
 53,Ava_Gardner,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK12teOE9znqHHlcW5siEDCbiHzJxY3nMKFamPkxvvV0iMYcaV***
 54,Jordana_Brewster,https://m.media-amazon.com/images/M/MV5BMTc1OTMwMzM3NF5BMl5BanBnXkFtZTgwMTM5MzIyODE@._V1_UX140_CR0,0,140,209_AL_.jpg***
 55,Samaire_Armstrong,https://m.media-amazon.com/images/M/MV5BMTY5NTYyMjAzNV5BMl5BanBnXkFtZTcwNTg2NjA2NQ@@._V1_UY209_CR5,0,140,209_AL_.jpg***
@@ -226,7 +232,7 @@ To get faces use google search but set "tools" from "Not filtered by License" to
 84,Ornella_Muti,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYxMWQbZLaB99hdLdFRA2FbQBvAocogTlRmQVtqHfEQJiPcB14***
 85,Nelly_Furtado,https://m.media-amazon.com/images/M/MV5BMTQ5OTMxMTMyOF5BMl5BanBnXkFtZTcwMzExMjQ4Mg@@._V1_UX140_CR0,0,140,209_AL_.jpg***
 86,Charlize_Theron,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0jWmsZ3D-MsnFTEwMZL_wvnCwLFZz7pvj3p4s2V-X1zNqrnTV***
-87,Dajana_Kllogjri,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBVewTAjLJ9ztdcBQzXlpOoNXy8VqiQ-i-1M1DLxHo-rLo_Yw8Q88***
+87,Dajana_Kllogjri,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBVewTAjLJ9ztdcBQzXlpOoNXy8VqiQ-i-1M1DLxHo-rLo_Yw8Q***
 88,Elke_Sommer,https://m.media-amazon.com/images/M/MV5BMTI5MzYzOTUxOV5BMl5BanBnXkFtZTcwNDAyMTMyNA@@._V1_UY209_CR19,0,140,209_AL_.jpg***
 89,Kirsten_Dunst,https://m.media-amazon.com/images/M/MV5BMTQ3NzkwNzM1MV5BMl5BanBnXkFtZTgwMzE2MTQ3MjE@._V1_UY209_CR8,0,140,209_AL_.jpg***
 90,Anne_Hathaway,https://m.media-amazon.com/images/M/MV5BNjQ5MTAxMDc5OF5BMl5BanBnXkFtZTcwOTI0OTE4OA@@._V1_UY209_CR1,0,140,209_AL_.jpg***
@@ -275,7 +281,22 @@ myCheckGroups   = async function() {
    } 
  }                                                                                            
                                                                                              
+                                                    
+myShowInfo = async function() {
                                                                                              
+     myIn = document.getElementById('myArray01').value.split('***')    // made it global
+   document.getElementById('myDivLoss').innerHTML = '' // clear it  
+                                                                                             
+   for (myIteration = 0;  myIteration < myIn.length; myIteration++){   
+                                                                                                   
+      myIncomingImages[myIteration] = []    // make new part of 2D array                                                                         
+      myIncomingImages[myIteration] = myIn[myIteration].split(',')    // [0] = groups,   [1] = labels,    [2] = Image URL                                                                                       
+      document.getElementById('myDiv123').innerHTML +=  `<a href='https://www.google.com/search?&tbm=isch&q=`+myIncomingImages[myIteration][1]+`' target='_blank'>`+myIteration+`: `+myIncomingImages[myIteration][1]+ `</a>,   `                                                                                   
+      document.getElementById('myDiv123').innerHTML += `<a href='${myIncomingImages[myIteration][2]}'>Image Only</a><br>`
+                                                                                             
+    }                                                                                       
+}
+                                                                                                
                                                                                              
                                                                                              
 myLoadManyImages = async function() {
