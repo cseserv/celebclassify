@@ -319,20 +319,20 @@ myLoadManyImages = async function() {
         let ctx = can.getContext('2d');  
         ctx.clearRect( 0, 0, can.width, can.height)                                                                                     
      //const getIngredients = async () => {}                                                                                        
-                                                                                             
+        tf.nextFrame()                                                                                     
         img.onload = await async function() {
             ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, can.width, can.height);                                         
         }  // img  
-                                                                                             
+        tf.nextFrame()                                                                                     
        const img2 = await tf.fromPixels(my32x32CanvasA);          // now lets classify the image                                                                                    
        const myDetectMarks = await net.detectLandmarks(img2)                                                                                                                                                                                        
-
+       tf.nextFrame()
        for (let j=0;  j < myDetectMarks._faceLandmarks.length; j++ ){  
          newArray[j] = []                                                                                        
          newArray[j][0] = myDetectMarks._faceLandmarks[j].x                                                                
          newArray[j][1] = myDetectMarks._faceLandmarks[j].y  
        }                                                                                          
-  
+       tf.nextFrame()
        document.getElementById('myDivLoss').innerHTML += 'Checking ' + myI + '<br>'                                                                                  
                                                                                    
        const forwardParams = {inputSize: 'sm', scoreThreshold:0.5}   // 'xs' (224 x 224) | 'sm' (320 x 320) | 'md' (416 x 416) | 'lg' (608 x 608)  //0, 1, 2, 3
@@ -361,17 +361,17 @@ myLoadManyImages = async function() {
       result2 = await faceapi.tinyYolov2(can, forwardParams)                                                                                        
                                                                                         
       faceapi.drawDetection('myBorderAsCanvas', result2.map(det => det.forSize(width, height)))   
-                                                                                             
+      tf.nextFrame()                                                                                       
                                                                                              
      let myCanvasElement4 = document.getElementById('myVideoAsCanvas');
      let myCTX4 = myCanvasElement4.getContext('2d');
      myCTX4.drawImage(can, 0, 0, myCanvasElement4.width, myCanvasElement4.height);
-                                      
+      tf.nextFrame()                                
      let myCanvasElement3 = document.getElementById('myFaceCanvas');
      let myCTX3 = myCanvasElement3.getContext('2d');
                                                                                              
      myCTX3.drawImage(myCanvasElement4, result2[0]._box._x-myFaceToClose, result2[0]._box._y-myFaceToClose, result2[0]._box._width+(2*myFaceToClose), result2[0]._box._height+(2*myFaceToClose), 0, 0, myCanvasElement3.width, myCanvasElement3.height);
-                                                                                         
+     tf.nextFrame()                                                                                    
      let img3 = tf.fromPixels(myFaceCanvas);    // the bounded canvas                                                                                                                    
      const myLandmarks = await net.detectLandmarks(img3)                                                                                                                                                                                      
   
@@ -380,12 +380,12 @@ myLoadManyImages = async function() {
        newArray2[j][0] = myLandmarks._faceLandmarks[j].x                                                                
        newArray2[j][1] = myLandmarks._faceLandmarks[j].y  
      }                                                                                          
-                                                                                                    
+     tf.nextFrame()                                                                                               
     // myCTX3.drawImage(can, 0, 0, myCanvasElement3.width, myCanvasElement3.height);                                                                                                                                                                                            
    //  const result = await classifier.predictClass(tf.tensor2d(newArray2, shape=[68,2]), 3);   // number of groups
                                                                                               
     faceapi.drawLandmarks(myCanvasElement3, myLandmarks, { lineWidth: 2, color: 'red' })    // may remove these eventually                                                                                                                                                                             
-                                                                                         
+    tf.nextFrame()                                                                                     
     
           classifier.addExample(tf.tensor2d(newArray2, shape=[68,2]), myI);                                                                                                                                                                                                                                              
           const myAddCount = classifier.getClassExampleCount()[myI]      
@@ -399,7 +399,7 @@ myLoadManyImages = async function() {
                                                                                              
                                                                                              
     document.getElementById('myDiv01').innerHTML += myI+', double check: '+ Math.round(myLandmarks._faceLandmarks[0].x)+', '+ Math.round(myLandmarks._faceLandmarks[0].y)+'<br>'                                                                                         
-                                                                                                
+    tf.nextFrame()                                                                                            
                                                                                              
                                                                                              
                                                                                              
