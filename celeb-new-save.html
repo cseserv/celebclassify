@@ -147,7 +147,6 @@ Analyse every <input type=number id="myInterval"  value="500" size=5> millisecon
  <br>
 To get faces use google search but set "tools" from "Not filtered by License" to "Labelled for reuse" I also set "any Size" to "medium"<br>
  <textarea id="myArray01" rows=10 cols=120>0,Megan_Fox,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezKBWzw2Svr0-iHLi4ZHmxMqJWxAFcNLzzaf_0uomkDRBH2n5***
-0,Megan_Fox,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezKBWzw2Svr0-iHLi4ZHmxMqJWxAFcNLzzaf_0uomkDRBH2n5***
 1,Mila_Kunis,https://m.media-amazon.com/images/M/MV5BODQyNTQyNzY4MV5BMl5BanBnXkFtZTcwODg5MDA3MQ@@._V1_UY209_CR17,0,140,209_AL_.jpg***
 2,Amanda_Seyfried,https://m.media-amazon.com/images/M/MV5BMjUyODkwODUyMF5BMl5BanBnXkFtZTcwMzU3MjYxMw@@._V1_UY209_CR22,0,140,209_AL_.jpg***
 3,Hayden_Panettiere,https://m.media-amazon.com/images/M/MV5BOTY2OTI1NzA0NV5BMl5BanBnXkFtZTcwOTczMTA2Mw@@._V1_UY209_CR9,0,140,209_AL_.jpg***
@@ -393,7 +392,8 @@ myLoadManyImages = async function() {
                                                                                              
           document.getElementById('myDivLoss').innerHTML += myAddCount + ' times, Example Added: to group #: '+ myI +'<br>'     
           document.getElementById('myDiv01').innerHTML += myI+', '+myIncomingImages[myIteration][1]+': '+ Math.round(newArray2[0][0])+', '+ Math.round(newArray2[0][1])+'<br>'                                                                                         
-          alert()                                                                                        
+        tf.nextFrame() 
+            alert()                                                                                        
                                                                                              
                                                                                              
                                                                                              
