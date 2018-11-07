@@ -391,14 +391,14 @@ myLoadManyImages = async function() {
           const myAddCount = classifier.getClassExampleCount()[myI]      
                                                                                              
           document.getElementById('myDivLoss').innerHTML += myAddCount + ' times, Example Added: to group #: '+ myI +'<br>'     
-          document.getElementById('myDiv01').innerHTML += myI+': '+ Math.round(newArray2[0][0])+', '+ Math.round(newArray2[0][1])+'<br>'                                                                                         
-                                                                                                  
+          document.getElementById('myDiv01').innerHTML += myI+', '+myIncomingImages[myIteration][0]+': '+ Math.round(newArray2[0][0])+', '+ Math.round(newArray2[0][1])+'<br>'                                                                                         
+          alert()                                                                                        
                                                                                              
                                                                                              
                                                                                              
                                                                                              
                                                                                              
-    document.getElementById('myDiv01').innerHTML += myI+', double check: '+ Math.round(myLandmarks._faceLandmarks[0].x)+', '+ Math.round(myLandmarks._faceLandmarks[0].y)+'<br>'                                                                                         
+   // document.getElementById('myDiv01').innerHTML += myI+', double check: '+ Math.round(myLandmarks._faceLandmarks[0].x)+', '+ Math.round(myLandmarks._faceLandmarks[0].y)+'<br>'                                                                                         
     tf.nextFrame()                                                                                            
                                                                                              
                                                                                              
